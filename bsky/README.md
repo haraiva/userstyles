@@ -3,11 +3,7 @@
 # Firmament
 A customisable theme for [Bluesky Social](https://bsky.app) built upon/based on [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
-You can freely customise the colours in the Stylus UserCSS configuration menu, or if you just want to borrow some of my colour schemes you can check out my readymade palettes below.
-
-TO DO:
-- add image previews to repo
-- publish on userstyles.world
+You can freely customise the colours in the Stylus UserCSS configuration menu, or if you just want to borrow some of my colour schemes you can check out my [readymade palettes](#readymade-palettes) below.
 
 ## Features:
 🌈 Customisable colours: Background, text, accent.  
@@ -25,11 +21,10 @@ See line 37 of the code for instructions on using it with Safari, or download th
 ## Readymade Palettes
 Copy the few respective lines of code for each colour palette to replace lines 26-31 (the bit starting with `//🎨 COLOUR PALETTE: `) in the code.
 
-For Safari: It's a little more annoying and you'd have to tweak the uncommented `:root` with the colour scheme of your choice... Maybe I'll make different versions of the same code for this. We'll see.
+For Safari: Download the file with the colour scheme of your choice in the [safari folder](https://github.com/haraiva/userstyles/tree/main/bsky/safari) and chuck it in your Userscripts folder.
 
 ### mossy forest
-![preview of mossy forest theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/forest-preview.png)
-
+The default colour scheme for Firmament; soothing warm greens.
 ```
 //🎨 COLOUR PALETTE: mossy forest
 @var color tweak-option-accent "Accent" #5f8e76
@@ -38,9 +33,12 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 @var color tweak-option-bg-dark "Dark Mode Background" #000f10
 @var color tweak-option-text-dark "Dark Mode Text Color" #e9daca
 ```
+![preview of mossy forest theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/forest-preview.png)
+
+---
 
 ### secondhand paperback
-![preview of secondhand paperback theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/paperback-preview.png)
+A nice warm beige and goldenrod colour scheme.
 ```
 //🎨 COLOUR PALETTE: secondhand paperback
 @var color tweak-option-accent "Accent" #b97f05
@@ -49,9 +47,12 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 @var color tweak-option-bg-dark "Dark Mode Background" #212124
 @var color tweak-option-text-dark "Dark Mode Text Color" #d7cfc0
 ```
+![preview of secondhand paperback theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/paperback-preview.png)
+
+---
 
 ### nice day
-![preview of nice day theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/niceday-preview.png)
+Warmer blue tones for warmer blue tone appreciators.
 ```
 //🎨 COLOUR PALETTE: nice day
 @var color tweak-option-accent "Accent" #1092a6
@@ -60,9 +61,12 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 @var color tweak-option-bg-dark "Dark Mode Background" #102a39
 @var color tweak-option-text-dark "Dark Mode Text Color" #d7cfc0
 ```
+![preview of nice day theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/niceday-preview.png)
+
+---
 
 ### tequila sunset
-![preview of tequila sunset theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/sunset-preview.png)
+It's like you're really there.
 ```
 //🎨 COLOUR PALETTE: tequila sunset
 @var color tweak-option-accent "Accent" #d95e53
@@ -71,6 +75,9 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 @var color tweak-option-bg-dark "Dark Mode Background" #1b0820
 @var color tweak-option-text-dark "Dark Mode Text Color" #d5bfb4
 ```
+![preview of tequila sunset theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/sunset-preview.png)
+
+---
 
 ## Credits
 - based on ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky) by [@fenny.zone](https://bsky.app/profile/fenny.zone)
