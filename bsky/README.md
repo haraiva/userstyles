@@ -1,3 +1,5 @@
+![preview of Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/all-preview.png)
+
 # Firmament
 A customisable theme for [Bluesky Social](https://bsky.app) built upon/based on [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
@@ -13,6 +15,8 @@ TO DO:
 🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
 💭 Customisable header symbol: Accepts Emoji!  
 
+![preview of darkmodes in Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/darkmode-preview.png)
+
 ## Installation
 Install using [Stylus](https://github.com/openstyles/stylus) on Chrome and Firefox, and the [Userscripts app](https://github.com/quoid/userscripts) on Safari (desktop and iOS). 
 
@@ -24,6 +28,8 @@ Copy the few respective lines of code for each colour palette to replace lines 2
 For Safari: It's a little more annoying and you'd have to tweak the uncommented `:root` with the colour scheme of your choice... Maybe I'll make different versions of the same code for this. We'll see.
 
 ### mossy forest
+![preview of mossy forest theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/forest-preview.png)
+
 ```
 //🎨 COLOUR PALETTE: mossy forest
 @var color tweak-option-accent "Accent" #5f8e76
@@ -34,6 +40,7 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 ```
 
 ### secondhand paperback
+![preview of secondhand paperback theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/paperback-preview.png)
 ```
 //🎨 COLOUR PALETTE: secondhand paperback
 @var color tweak-option-accent "Accent" #b97f05
@@ -44,6 +51,7 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 ```
 
 ### nice day
+![preview of nice day theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/niceday-preview.png)
 ```
 //🎨 COLOUR PALETTE: nice day
 @var color tweak-option-accent "Accent" #1092a6
@@ -54,6 +62,7 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 ```
 
 ### tequila sunset
+![preview of tequila sunset theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/sunset-preview.png)
 ```
 //🎨 COLOUR PALETTE: tequila sunset
 @var color tweak-option-accent "Accent" #d95e53
