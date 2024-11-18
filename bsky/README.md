@@ -8,18 +8,18 @@ You can freely customise the colours in the Stylus UserCSS configuration menu, o
 **Table of Contents**
 1. [Features](#features)  
 2. [Installation](#installation)  
-3. [Readymade Palettes](#readymade-palettes)
-	a. [mossy forest](#mossy-forest)
-	b. [secondhand paperback](#secondhand-paperback)
-	c. [nice day](#nice-day)
-	d. [tequila sunset](#tequila-sunset)
+3. [Readymade Palettes](#readymade-palettes)  
+	a. [mossy forest](#mossy-forest)  
+	b. [secondhand paperback](#secondhand-paperback)  
+	c. [nice day](#nice-day)  
+	d. [tequila sunset](#tequila-sunset)  
 4. [Credits](#credits)
 
 ## Features:
-🌈 Customisable colours: Background, text, accent.  
-🌗 Light/Dark modes: Follows system settings.  
-🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
-💭 Customisable header symbol: Accepts Emoji!  
+	🌈 Customisable colours: Background, text, accent.  
+	🌗 Light/Dark modes: Follows system settings.  
+	🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
+	💭 Customisable header symbol: Accepts Emoji!  
 
 ![preview of darkmodes in Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/darkmode-preview.png)
 
