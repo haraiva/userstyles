@@ -8,10 +8,10 @@ TO DO:
 - publish on userstyles.world
 
 ## Features:
-🌈 Customisable colours: Background, text, accent.
-🌗 Light/Dark modes: Follows system settings.
-🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).
-💭 Customisable header symbol: Accepts Emoji!
+🌈 Customisable colours: Background, text, accent.  
+🌗 Light/Dark modes: Follows system settings.  
+🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
+💭 Customisable header symbol: Accepts Emoji!  
 
 ## Installation
 Install using [Stylus](https://github.com/openstyles/stylus) on Chrome and Firefox, and the [Userscripts app](https://github.com/quoid/userscripts) on Safari (desktop and iOS). 
