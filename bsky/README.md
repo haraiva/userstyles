@@ -16,10 +16,10 @@ You can freely customise the colours in the Stylus UserCSS configuration menu, o
 4. [Credits](#credits)
 
 ## Features:
-	🌈 Customisable colours: Background, text, accent.  
-	🌗 Light/Dark modes: Follows system settings.  
-	🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
-	💭 Customisable header symbol: Accepts Emoji!  
+🌈 Customisable colours: Background, text, accent.  
+🌗 Light/Dark modes: Follows system settings.  
+🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
+💭 Customisable header symbol: Accepts Emoji!  
 
 ![preview of darkmodes in Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/darkmode-preview.png)
 
