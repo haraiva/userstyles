@@ -1,9 +1,19 @@
+# Firmament
 ![preview of Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/all-preview.png)
 
-# Firmament
 A customisable theme for [Bluesky Social](https://bsky.app) built upon/based on [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
 You can freely customise the colours in the Stylus UserCSS configuration menu, or if you just want to borrow some of my colour schemes you can check out my [readymade palettes](#readymade-palettes) below.
+
+**Table of Contents**
+1. [Features](#features)  
+2. [Installation](#installation)  
+3. [Readymade Palettes](#readymade-palettes)
+	a. [mossy forest](#mossy-forest)
+	b. [secondhand paperback](#secondhand-paperback)
+	c. [nice day](#nice-day)
+	d. [tequila sunset](#tequila-sunset)
+4. [Credits](#credits)
 
 ## Features:
 🌈 Customisable colours: Background, text, accent.  
