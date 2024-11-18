@@ -2,7 +2,8 @@
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
 @version        0.2
-@description    a customisable theme by @haraiva.bsky.social based on @fenny.zone's amazing "Better Bluesky" userstyle.
+@description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
+@updateURL      https://github.com/haraiva/userstyles/raw/main/bsky/firmament.user.css
 @license        MIT
 @match          *://*.bsky.app/*
 @var select tweak-option-use-title "Use Custom Title" {
@@ -22,7 +23,7 @@
   "no:No": "1px auto"
 }
 
-// mossy forest
+// 🎨 COLOUR PALETTE: fairy forest
 @var color tweak-option-accent "Accent" #5f8e76
 @var color tweak-option-bg "Light Mode Background" #e6ded4
 @var color tweak-option-text "Light Mode Text Color" #2f2b27
