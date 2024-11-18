@@ -2,7 +2,8 @@
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
 @version        0.2
-@description    a customisable theme by @haraiva.bsky.social based on @fenny.zone's amazing "Better Bluesky" userstyle.
+@description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
+@updateURL      https://github.com/haraiva/userstyles/raw/main/bsky/safari/firmament.paperback.user.css
 @license        MIT
 @match          *://*.bsky.app/*
 @var select tweak-option-use-title "Use Custom Title" {
@@ -22,12 +23,12 @@
   "no:No": "1px auto"
 }
 
-// mossy forest
-@var color tweak-option-accent "Accent" #5f8e76
-@var color tweak-option-bg "Light Mode Background" #e6ded4
-@var color tweak-option-text "Light Mode Text Color" #2f2b27
-@var color tweak-option-bg-dark "Dark Mode Background" #000f10
-@var color tweak-option-text-dark "Dark Mode Text Color" #e9daca
+//🎨 COLOUR PALETTE: secondhand paperback
+@var color tweak-option-accent "Accent" #b97f05
+@var color tweak-option-bg "Light Mode Background" #e6ddd3
+@var color tweak-option-text "Light Mode Text Color" #2d2823
+@var color tweak-option-bg-dark "Dark Mode Background" #212124
+@var color tweak-option-text-dark "Dark Mode Text Color" #d7cfc0
 
 }"
 
@@ -50,13 +51,13 @@
         --tweak-option-text-transform: revert;
         --tweak-option-disable-outlines: none;
 
-        --tweak-option-accent: #5f8e76;
-        --tweak-option-bg: #e6ded4;
-        --tweak-option-text: #2f2b27;
+        --tweak-option-accent: #b97f05;
+        --tweak-option-bg: #e6ddd3;
+        --tweak-option-text: #2d2823;
 
-        --tweak-option-accent-dark: #5f8e76;
-        --tweak-option-bg-dark: #000f10;
-        --tweak-option-text-dark: #e9daca;
+        --tweak-option-accent-dark: #b97f05;
+        --tweak-option-bg-dark: #212124;
+        --tweak-option-text-dark: #d7cfc0;
     } 
 
 /*
