@@ -1,5 +1,4 @@
 # Firmament
-
 A customisable theme for [Bluesky Social](https://bsky.app) built upon/based on [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
 You can freely customise the colours in the Stylus UserCSS configuration menu, or if you just want to borrow some of my colour schemes you can check out my readymade palettes below.
@@ -8,19 +7,25 @@ TO DO:
 - add image previews to repo
 - publish on userstyles.world
 
-## Installation
+## Features:
+🌈 Customisable colours: Background, text, accent.
+🌗 Light/Dark modes: Follows system settings.
+🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).
+💭 Customisable header symbol: Accepts Emoji!
 
-Install using [Stylus](https://github.com/openstyles/stylus) on Chrome and Firefox, and the [Userscripts app](https://github.com/quoid/userscripts) on Safari (desktop and iOS). See line 37 of the code for instructions on using it with Safari.
+## Installation
+Install using [Stylus](https://github.com/openstyles/stylus) on Chrome and Firefox, and the [Userscripts app](https://github.com/quoid/userscripts) on Safari (desktop and iOS). 
+
+See line 37 of the code for instructions on using it with Safari, or download the file in the [safari folder](https://github.com/haraiva/userstyles/tree/main/bsky/safari), customise it and chuck it into your Userscripts folder.
 
 ## Readymade Palettes
+Copy the few respective lines of code for each colour palette to replace lines 26-31 (the bit starting with `//🎨 COLOUR PALETTE: `) in the code.
 
-Copy the few respective lines of code for each colour palette to replace lines 25-30 in the code.
-
-For Safari: It's a little more annoying and you'd have to tweak the uncommented `:root` with the colour scheme of your choice...
+For Safari: It's a little more annoying and you'd have to tweak the uncommented `:root` with the colour scheme of your choice... Maybe I'll make different versions of the same code for this. We'll see.
 
 ### mossy forest
 ```
-// mossy forest
+//🎨 COLOUR PALETTE: mossy forest
 @var color tweak-option-accent "Accent" #5f8e76
 @var color tweak-option-bg "Light Mode Background" #e6ded4
 @var color tweak-option-text "Light Mode Text Color" #2f2b27
@@ -30,7 +35,7 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 
 ### secondhand paperback
 ```
-// secondhand paperback
+//🎨 COLOUR PALETTE: secondhand paperback
 @var color tweak-option-accent "Accent" #b97f05
 @var color tweak-option-bg "Light Mode Background" #e6ddd3
 @var color tweak-option-text "Light Mode Text Color" #2d2823
@@ -40,7 +45,7 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 
 ### nice day
 ```
-// nice day
+//🎨 COLOUR PALETTE: nice day
 @var color tweak-option-accent "Accent" #1092a6
 @var color tweak-option-bg "Light Mode Background" #e6dfd3
 @var color tweak-option-text "Light Mode Text Color" #0c1e2f
@@ -50,7 +55,7 @@ For Safari: It's a little more annoying and you'd have to tweak the uncommented 
 
 ### tequila sunset
 ```
-// tequila sunset
+//🎨 COLOUR PALETTE: tequila sunset
 @var color tweak-option-accent "Accent" #d95e53
 @var color tweak-option-bg "Light Mode Background" #fdf3e0
 @var color tweak-option-text "Light Mode Text Color" #380b43
