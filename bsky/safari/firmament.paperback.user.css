@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3
+@version        0.3.1
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
 @updateURL      https://github.com/haraiva/userstyles/raw/main/bsky/safari/firmament.paperback.user.css
 @license        MIT
@@ -11,7 +11,7 @@
   "no:No": "0px"
 }
 @var text tweak-option-title "Custom Title (in quotes)" "'🌙'"
-@var text tweak-option-font "Font Family" "'InterVariable';"
+@var text tweak-option-font "Font Family (in quotes)" "'InterVariable'"
 @var number tweak-option-line-height "Line Height" [1.3, null, null, 0.05]
 @var select tweak-option-text-transform "Text Transform" {
   "none:None": "revert",
