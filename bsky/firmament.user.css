@@ -1,9 +1,8 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.2
+@version        0.3
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
-@updateURL      https://github.com/haraiva/userstyles/raw/main/bsky/firmament.user.css
 @license        MIT
 @match          *://*.bsky.app/*
 @var select tweak-option-use-title "Use Custom Title" {
@@ -135,8 +134,7 @@
     /* override inline dark mode colors */
     @media (prefers-color-scheme: dark) {
         :root {
-            --tweak-accent: var(--tweak-option-accent-dark, #5f8e76;
-);
+            --tweak-accent: var(--tweak-option-accent-dark, #5f8e76);
             --tweak-bg: var(--tweak-option-bg-dark, #000f10);
             --tweak-fg: var(--tweak-option-text-dark, #e9daca);
 
@@ -239,6 +237,9 @@
     /* buttons with gradient backgrounds */
     [style*="background-image: linear-gradient"][style*="rgb(90, 113, 250)"] {
         background: var(--tweak-accent) !important;
+    }
+    [style*="background-image: linear-gradient"][style*="rgb(90, 113, 250)"]:hover {
+        background: var(--tweak-fg) !important;
     }
     [style*="background-image: linear-gradient"][style*="rgb(90, 113, 250)"] > div {
         color: var(--tweak-bg) !important
@@ -573,6 +574,7 @@
     [aria-label='New post']:hover, [aria-label="New chat"]:hover {
         background-color: var(--tweak-bg-secondary) !important;
         transition: all 125ms;
+        border-radius: 64px;
         
     }
     @media (max-width: 799px) {
@@ -609,6 +611,7 @@
     /* quote posts, URL cards, URL cards in post composer */
     :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"], [data-testid="composePostView"]) [aria-label^="Post by"] { border-width: 0px; }
 
+/* OUTDATED? STUFF */
     /*:is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"]) a > div:not(:has(> [data-testid="userAvatarImage"])),
     [data-testid="composePostView"] :has(> [aria-label="Remove image preview"]) {
         border-width: 1px !important;
@@ -616,17 +619,25 @@
         border-color: var(--tweak-fg-more-translucent) !important;
         transition: background 125ms;
     }*/
+    
+    /* highlight quoted post on hover */
+/*     :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"], [data-testid="composePostView"]) [aria-label^="Post by"]:hover {
+        border-color: transparent !important;
+        background: var(--tweak-fg-more-translucent) !important;
+    } */
+    
+    /* remove inner background */
+     :is([data-testid^="postThreadItem-"], [data-testid="composePostView"]) [aria-label^="Post by"] a {
+        background-color: var(--tweak-bg) !important;
+    } 
 
-    /* highlight on hover */
-    :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"], [data-testid="composePostView"]) [aria-label^="Post by"]:hover,
+    /* highlight embedded link on hover */
     :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"]) a > div:not(:has(> [data-testid="userAvatarImage"])):hover {
         border-color: transparent !important;
         background: var(--tweak-fg-more-translucent) !important;
     }
-    /* remove inner background */
-    :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"], [data-testid="composePostView"]) [aria-label^="Post by"] a {
-        background-color: var(--tweak-bg) !important;
-    }
+    
+    
     /* don't underline on hover */
     :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"], [data-testid="composePostView"]) [aria-label^="Post by"] a:hover,
     :is([data-testid='contentHider-post'], [data-testid^="postThreadItem-"]) a:hover {
@@ -816,6 +827,9 @@
             border-width: 1px !important;
         }
     }
+    
+    /* giving the text area in the post editor a little more breathing room */ 
+    [data-testid="composePostView"] > div > div:nth-child(2) { padding-block: 8px; }
 
     /* 📝 POST COMPOSER */
 
@@ -999,15 +1013,15 @@
 
     /* notifications number in Home sidebar */
     [aria-label="Notifications"] > div > div { color: var(--tweak-fg) !important;}
-
-    /* notification spacing */
-    [data-testid='notificationsScreen'] [data-testid^='feedItem-'] {
-        margin: 8px 8px 0 !important;
+    
+    /* notification borders */
+    [data-testid='notificationsScreen'] [data-testid^='feedItem-'] > div, [data-testid='notificationsScreen'] [data-testid^='feedItem-'] > div > div { 
+    border-color: var(--tweak-bg-secondary) !important; 
     }
 
     /* round notification corners */
     [data-testid='notificationsScreen'] [style*='background-color:'] {
-        border-radius: var(--tweak-radius);
+        border-radius: 0px;
     }
 
     /* highlight new notifications */
@@ -1169,6 +1183,4 @@
         background-color: var(--tweak-bg-tertiary) !important; 
     }
 
-
-    
 }
