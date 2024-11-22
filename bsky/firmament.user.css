@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3.1
+@version        0.3.2
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
 @license        MIT
 @match          *://*.bsky.app/*
@@ -10,7 +10,7 @@
   "no:No": "0px"
 }
 @var text tweak-option-title "Custom Title (in quotes)" "'🌙'"
-@var text tweak-option-font "Font Family (in quotes) "'InterVariable'"
+@var text tweak-option-font "Font Family (in quotes)" "'InterVariable'"
 @var number tweak-option-line-height "Line Height" [1.3, null, null, 0.05]
 @var select tweak-option-text-transform "Text Transform" {
   "none:None": "revert",
@@ -56,7 +56,6 @@
         --tweak-option-bg: #e6ded4;
         --tweak-option-text: #2f2b27;
 
-        --tweak-option-accent-dark: #5f8e76;
         --tweak-option-bg-dark: #000f10;
         --tweak-option-text-dark: #e9daca;
     } 
@@ -80,9 +79,9 @@
 */
 
     :root {
-        --tweak-accent: var(--tweak-option-accent, #5f8e76);
-        --tweak-bg: var(--tweak-option-bg, #e6ded4);
-        --tweak-fg: var(--tweak-option-text, #2f2b27);
+        --tweak-accent: var(--tweak-option-accent);
+        --tweak-bg: var(--tweak-option-bg);
+        --tweak-fg: var(--tweak-option-text);
 
         --tweak-bg-secondary: color-mix(in srgb, var(--tweak-bg) 90%, black);
         --tweak-bg-tertiary: color-mix(in srgb, var(--tweak-bg) 75%, black);
@@ -134,9 +133,9 @@
     /* override inline dark mode colors */
     @media (prefers-color-scheme: dark) {
         :root {
-            --tweak-accent: var(--tweak-option-accent-dark, #5f8e76);
-            --tweak-bg: var(--tweak-option-bg-dark, #000f10);
-            --tweak-fg: var(--tweak-option-text-dark, #e9daca);
+            --tweak-accent: var(--tweak-option-accent);
+            --tweak-bg: var(--tweak-option-bg-dark);
+            --tweak-fg: var(--tweak-option-text-dark);
 
             --tweak-bg-secondary: color-mix(in srgb, var(--tweak-bg) 85%, white);
             --tweak-bg-tertiary: color-mix(in srgb, var(--tweak-bg) 75%, white);
