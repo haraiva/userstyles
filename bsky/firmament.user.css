@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3.2
+@version        0.3.3
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
 @license        MIT
 @match          *://*.bsky.app/*
@@ -1012,6 +1012,11 @@
 
     /* notifications number in Home sidebar */
     [aria-label="Notifications"] > div > div { color: var(--tweak-fg) !important;}
+    
+    div[aria-label*="unread items"] {
+      background-color: var(--tweak-accent) !important;
+      color: var(--tweak-fg) !important;
+    }
     
     /* notification borders */
     [data-testid='notificationsScreen'] [data-testid^='feedItem-'] > div, [data-testid='notificationsScreen'] [data-testid^='feedItem-'] > div > div { 
