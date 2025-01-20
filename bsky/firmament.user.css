@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3.3
+@version        0.3.4
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
 @license        MIT
 @match          *://*.bsky.app/*
@@ -123,6 +123,7 @@
         [style*="color: rgb(111, 134, 159)"] {
             color: var(--tweak-fg-translucent) !important;
         }
+
         [fill="#000000" i],
         [fill="#545664" i],
         [fill="#71768A" i] {
@@ -169,6 +170,10 @@
         [style*="color: rgb(108, 132, 157)"],
         [style*="color: rgb(120, 142, 165)"], 
         [style*="color: rgb(91, 119, 149)"] {
+            color: var(--tweak-fg-translucent) !important;
+        }
+
+        [style*="color: rgb(147, 165, 183)"] {
             color: var(--tweak-fg-translucent) !important;
         }
         
