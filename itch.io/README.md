@@ -3,6 +3,8 @@
 
 A compact grid layout for your many projects on the [itch.io](https://itch.io/) dashboard. For easier navigation on the itch.io project dashboard, especially if you have a lot of projects and want a more compact view for them.
 
+## Latest version: [v1.0.0](https://github.com/haraiva/userstyles/releases/tag/scratch-v1.0.0)
+
 Features include:
 - Choose between 2, 3 and 4-column grid layouts!
 - Adjust the gutter between your project cells!
