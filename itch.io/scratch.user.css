@@ -1,0 +1,138 @@
+/* ==UserStyle==
+@name           Scratch
+@namespace      haraiva.itch.io
+@version        1.0.0
+@description    a compact grid layout for your many projects on the itch.io dashboard, made by haraiva.itch.io.
+@author         cecile richard
+
+@var range tweak-option-grid-columns "Grid Columns" [3, 2, 4, 1]
+
+@var range tweak-option-grid-gap "Grid Gap" [0.5, 0.1, 1, 0.1, "em"]
+
+@var select tweak-option-owner-display "Hide Project Owner (Recommended for 3-column grid)" {
+    "Yes": "none",
+    "No": "block"
+}
+
+@var select tweak-option-create-button-order "'Create new project' button position" {
+    "Before Game List": "0",
+    "After Game List": "2"
+}
+
+==/UserStyle== */
+
+
+
+@-moz-document url-prefix("https://itch.io") {
+
+:root {
+    --tweak-grid-columns: var(--tweak-option-grid-columns);
+    --tweak-grid-gap: var(--tweak-option-grid-gap); 
+    --tweak-owner-display: var(--tweak-option-owner-display);
+    --tweak-create-button-order: var(--tweak-option-create-button-order);
+}
+    
+    /* stacking the dashboard elements */
+    .dashboard_page .dashboard_columns { 
+        display: flex;
+        flex-flow: column;
+        gap: 0px;
+    }
+    
+    /* GAMES LIST */ 
+    .dashboard_page .dashboard_columns .left_col {
+        order: 2;
+        display: flex;
+        flex-flow: column;
+    }
+    
+    .dashboard_page .dashboard_columns .left_col .buttons { 
+        order: var(--tweak-create-button-order); }
+    
+    .dashboard_page .social_nag { order: 3; }
+    
+    .dashboard_page .dashboard_columns .left_col .game_list {
+        display: flex;
+        flex-flow: row wrap;
+        gap: var(--tweak-grid-gap);
+        margin-block: 20px;
+        order: 1;
+        margin-right: calc(var(--tweak-grid-gap) * -1);
+    }
+    
+    .dashboard_page .dashboard_columns .left_col .game_list > * { 
+        width: calc((100%/var(--tweak-grid-columns)) - (var(--tweak-grid-gap)));
+    }
+    
+    .dashboard_page .game_list .game_row { margin: 0; }
+    
+    .dashboard_page .game_list .row_columns { height: 100%;}
+    
+    .dashboard_page .game_list .cover_link, .dashboard_page .game_list .cover_image { max-width: 100%; height:100%; }
+    
+    .dashboard_page .game_list .cover_link > * {  
+        display: flex;
+        height: 100%;
+    }
+    
+    .dashboard_page .game_list .cover_image { object-fit: cover; }
+    
+    .dashboard_page .game_list .game_title { 
+        padding-block: 4px;
+        background-color: var(--itchio_gray_back);
+    }
+    
+    .dashboard_page .game_list .game_title .owner { 
+        font-size: 0.9em;
+        display: var(--tweak-owner-display);
+    }
+    
+    .dashboard_page .game_list .game_links { 
+        display: flex;
+        flex-flow: row wrap;
+        height: auto;
+        padding-inline: 4px;
+        background-color: var(--itchio_white_back);
+    }
+    
+    .dashboard_page .game_list .game_links > * { margin: 4px; }
+    
+    .dashboard_page .filter_picker_widget { background-color: var(--itchio_gray_back) }
+    
+    /* SUMMARIES */
+    .dashboard_page .dashboard_columns .right_col { 
+        order: 1; 
+        width: 100%;
+    }
+    
+    /* NOTIFICATIONS */
+    .dashboard_page .notification { width: 100%; }
+    
+    /* SUMMARY GRAPHS */ 
+    .dashboard_page .column_cell { 
+        display: flex;
+        flex-flow: row wrap;
+        border: 1px solid var(--itchio_border_color);
+    }
+    
+    .dashboard_page .column_cell h2 { 
+        width: 100%; 
+        padding: 5px 15px;
+        border-bottom: 1px solid var(--itchio_border_color);
+    }
+    
+    .dashboard_page .graph_container {
+    margin-left: 0px;
+    width: 50%;
+    }
+    
+    
+    /* ANALYTICS PAGE */
+    
+    /* this is for nat specifically <3 */
+    .dashboard_analytics_page .summary_table .field_text { 
+        display: inline-block;
+        max-width: 24ch; 
+        overflow: clip; text-overflow: ellipsis; }
+    
+}
