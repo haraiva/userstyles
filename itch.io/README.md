@@ -21,7 +21,7 @@ Scratch is a userstyle that turns the [itch.io](https://itch.io/) dashboard into
 ## Installation
 With Stylus ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Google Chrome](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en)):
 
-1. After installing the browser extension, simply go to Scratch's userstyles.world page and click "Install".
+1. After installing the browser extension, simply go to [Scratch's userstyles.world page](https://userstyles.world/style/20749/scratch-dashboard-grid-view-for-itch-io) and click "Install".
 2. Tweak the options using the UserCSS configuration menu that you can open with the gear (⚙️) icon on the right side of the userstyle's name.
 3. Have fun!
 
