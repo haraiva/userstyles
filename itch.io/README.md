@@ -21,10 +21,13 @@ Scratch is a userstyle that turns the [itch.io](https://itch.io/) dashboard into
 ## Screenshots
 
 ![gif showcasing the different grid layouts](https://github.com/haraiva/userstyles/blob/main/itch.io/screenshots/scratch-grids.gif)
-Different grid layouts.
+Grid layouts - 2, 3, 4 columns
 
 ![gif showcasing different gutter settings](https://github.com/haraiva/userstyles/blob/main/itch.io/screenshots/scratch-gutters.gif)
-Different gutter settings.
+Gutter settings from 0.1em to 1em.
+
+![gif showcasing different filter settings](https://github.com/haraiva/userstyles/blob/main/itch.io/screenshots/scratch-filters.gif)
+Filtering out published projects.
 
 ## Configuration
 
