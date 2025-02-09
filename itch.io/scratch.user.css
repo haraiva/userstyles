@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Scratch
 @namespace      haraiva.itch.io
-@version        1.0.0
+@version        1.1.0
 @description    a compact grid layout for your many projects on the itch.io dashboard, made by haraiva.itch.io.
 @author         cecile richard
 
@@ -15,8 +15,23 @@
 }
 
 @var select tweak-option-create-button-order "'Create new project' button position" {
-    "Before Game List": "0",
-    "After Game List": "2"
+    "Before List": "0",
+    "After List": "2"
+}
+
+@var select tweak-option-published-display "Filter Published projects" {
+    "Show": "block",
+    "Hide": "none"
+}
+
+@var select tweak-option-draft-display "Filter Draft projects" {
+    "Show": "block",
+    "Hide": "none"
+}
+
+@var select tweak-option-restricted-display "Filter Restricted projects" {
+    "Show": "block",
+    "Hide": "none"
 }
 
 ==/UserStyle== */
@@ -30,6 +45,10 @@
     --tweak-grid-gap: var(--tweak-option-grid-gap); 
     --tweak-owner-display: var(--tweak-option-owner-display);
     --tweak-create-button-order: var(--tweak-option-create-button-order);
+    
+    --tweak-published-display: var(--tweak-option-published-display);
+    --tweak-draft-display: var(--tweak-option-draft-display);
+    --tweak-restricted-display: var(--tweak-option-restricted-display);
 }
     
     /* stacking the dashboard elements */
@@ -46,11 +65,14 @@
         flex-flow: column;
     }
     
+    /* this controls where the 'Create new project' button goes */
     .dashboard_page .dashboard_columns .left_col .buttons { 
         order: var(--tweak-create-button-order); }
     
+    /* i love that this is called 'social nag'. this keeps its position at the bottom of the page. */
     .dashboard_page .social_nag { order: 3; }
     
+    /* making the project list into a grid */
     .dashboard_page .dashboard_columns .left_col .game_list {
         display: flex;
         flex-flow: row wrap;
@@ -60,10 +82,13 @@
         margin-right: calc(var(--tweak-grid-gap) * -1);
     }
     
+    /* dark mathematics for working out the width of cells depending on number of columns */
     .dashboard_page .dashboard_columns .left_col .game_list > * { 
         width: calc((100%/var(--tweak-grid-columns)) - (var(--tweak-grid-gap)));
     }
     
+    
+    /* various cosmetic changes for all the projects to play nicely with the new layouts */
     .dashboard_page .game_list .game_row { margin: 0; }
     
     .dashboard_page .game_list .row_columns { height: 100%;}
@@ -87,6 +112,7 @@
         display: var(--tweak-owner-display);
     }
     
+    /* re-ordering the various links under project titles and making them less cramped... */
     .dashboard_page .game_list .game_links { 
         display: flex;
         flex-flow: row wrap;
@@ -97,7 +123,27 @@
     
     .dashboard_page .game_list .game_links > * { margin: 4px; }
     
+    /* making the 'more' button a bit more visible */
     .dashboard_page .filter_picker_widget { background-color: var(--itchio_gray_back) }
+    
+    /* FILTERING PROJECTS BY PUBLISH STATUS */
+    
+    /* published projects */
+    .dashboard_page .game_list .game_row:has(span.tag_bubble.green) { 
+        display: var(--tweak-published-display); 
+    }
+    
+    /* draft projects */
+    .dashboard_page .game_list .game_row:has(span.tag_bubble.red) { 
+        display: var(--tweak-draft-display); 
+    }
+    
+    /* restricted projects */
+    .dashboard_page .game_list .game_row:has(span.tag_bubble.purple) { 
+        display: var(--tweak-restricted-display); 
+    }
+    
+    
     
     /* SUMMARIES */
     .dashboard_page .dashboard_columns .right_col { 
@@ -122,8 +168,8 @@
     }
     
     .dashboard_page .graph_container {
-    margin-left: 0px;
-    width: 50%;
+        margin-left: 0px;
+        width: 50%;
     }
     
     
