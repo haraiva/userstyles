@@ -18,6 +18,15 @@ Scratch is a userstyle that turns the [itch.io](https://itch.io/) dashboard into
 - Move the 'Create new project' to the top of the project list for easier access!
 - Filter projects by publish status! Useful if you only want to see your drafts, for example. 
 
+## Installation
+With Stylus ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Google Chrome](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en)):
+
+1. After installing the browser extension, simply go to Scratch's userstyles.world page and click "Install".
+2. Tweak the options using the UserCSS configuration menu that you can open with the gear (⚙️) icon on the right side of the userstyle's name.
+3. Have fun!
+
+If you have other ways of installing userstyles I'm assuming you know what you're doing and don't need a guide. Feel free to modify the CSS as you wish!
+
 ## Screenshots
 
 ![gif showcasing the different grid layouts](https://github.com/haraiva/userstyles/blob/main/itch.io/screenshots/scratch-grids.gif)
