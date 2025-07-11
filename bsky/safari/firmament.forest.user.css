@@ -1,9 +1,8 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3.4
+@version        0.3.5
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
-@updateURL      https://github.com/haraiva/userstyles/raw/main/bsky/safari/firmament.forest.user.css
 @license        MIT
 @match          *://*.bsky.app/*
 @var select tweak-option-use-title "Use Custom Title" {
@@ -13,6 +12,14 @@
 @var text tweak-option-title "Custom Title (in quotes)" "'🌙'"
 @var text tweak-option-font "Font Family (in quotes)" "'InterVariable'"
 @var number tweak-option-line-height "Line Height" [1.3, null, null, 0.05]
+@var select tweak-option-show-notifications "Hide Notifications Number" {
+  "no:No*": "var(--tweak-fg)",
+  "yes:Yes": "transparent"
+}
+@var select tweak-option-show-metrics "Hide Metrics" {
+  "no:No*": "visible",
+  "yes:Yes": "hidden"
+}
 @var select tweak-option-text-transform "Text Transform" {
   "none:None": "revert",
   "lowercase:lowercase": "lowercase",
@@ -23,7 +30,7 @@
   "no:No": "1px auto"
 }
 
-//🎨 COLOUR PALETTE: mossy forest
+// 🎨 COLOUR PALETTE: fairy forest
 @var color tweak-option-accent "Accent" #5f8e76
 @var color tweak-option-bg "Light Mode Background" #e6ded4
 @var color tweak-option-text "Light Mode Text Color" #2f2b27
@@ -33,6 +40,7 @@
 }"
 
 ==/UserStyle== */
+@-moz-document domain("bsky.app") {
 
 /* 🚨📲🚨 if you're using Userscripts for iOS, delete the @-moz-document line
        above, and the closing "}" at the very bottom of the file.
@@ -42,6 +50,7 @@
        your customized options block into the new version. */
        
 /* uncomment this block for Safari -- these are your tweaks  */
+/*  
     :root {
         --tweak-option-use-title: none;
         --tweak-option-title: '🌙';
@@ -55,10 +64,14 @@
         --tweak-option-bg: #e6ded4;
         --tweak-option-text: #2f2b27;
 
-        --tweak-option-accent-dark: #5f8e76;
         --tweak-option-bg-dark: #000f10;
         --tweak-option-text-dark: #e9daca;
+        
+        --tweak-option-show-notifications: var(--tweak-fg);
+        --tweak-option-show-metrics: visible;
     } 
+*/
+
 
 /*
     Section headings (search for the emoji to jump to them quickly!)
@@ -78,9 +91,9 @@
 */
 
     :root {
-        --tweak-accent: var(--tweak-option-accent, #5f8e76);
-        --tweak-bg: var(--tweak-option-bg, #e6ded4);
-        --tweak-fg: var(--tweak-option-text, #2f2b27);
+        --tweak-accent: var(--tweak-option-accent);
+        --tweak-bg: var(--tweak-option-bg);
+        --tweak-fg: var(--tweak-option-text);
 
         --tweak-bg-secondary: color-mix(in srgb, var(--tweak-bg) 90%, black);
         --tweak-bg-tertiary: color-mix(in srgb, var(--tweak-bg) 75%, black);
@@ -93,6 +106,8 @@
         --tweak-radius: 14px;
         --tweak-blur: blur(30px);
         --tweak-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px;
+        --tweak-show-notifications: var(--tweak-option-show-notifications);
+        --tweak-show-metrics: var(--tweak-option-show-metrics);
 
         --background: var(--tweak-bg) !important;
         --backgroundLight: var(--tweak-bg) !important;
@@ -122,6 +137,7 @@
         [style*="color: rgb(111, 134, 159)"] {
             color: var(--tweak-fg-translucent) !important;
         }
+
         [fill="#000000" i],
         [fill="#545664" i],
         [fill="#71768A" i] {
@@ -132,9 +148,9 @@
     /* override inline dark mode colors */
     @media (prefers-color-scheme: dark) {
         :root {
-            --tweak-accent: var(--tweak-option-accent-dark, #5f8e76);
-            --tweak-bg: var(--tweak-option-bg-dark, #000f10);
-            --tweak-fg: var(--tweak-option-text-dark, #e9daca);
+            --tweak-accent: var(--tweak-option-accent);
+            --tweak-bg: var(--tweak-option-bg-dark);
+            --tweak-fg: var(--tweak-option-text-dark);
 
             --tweak-bg-secondary: color-mix(in srgb, var(--tweak-bg) 85%, white);
             --tweak-bg-tertiary: color-mix(in srgb, var(--tweak-bg) 75%, white);
@@ -487,16 +503,16 @@
     /* 🏠 FEED */
 
     /* custom title text */
-    .css-175oi2r.r-1ljd8xs.r-13l2t4g.r-5laclt.r-33ulu8:nth-child(1) div.css-175oi2r { 
+    div svg:has(> path[d^="M13.873 3.805C21.21"]) { 
         width: 100% !important; 
         align-items: center; justify-content: center;
     }
 
-    .css-175oi2r.r-1ljd8xs.r-13l2t4g.r-5laclt.r-33ulu8 .css-175oi2r svg:has(> path[d^="M13.873 3.805C21.21"])  {  
+    div svg:has(> path[d^="M13.873 3.805C21.21"])  {  
         display: var(--tweak-option-use-title); 
     }
     
-    .css-175oi2r.r-1ljd8xs.r-13l2t4g.r-5laclt.r-33ulu8:nth-child(1) div.css-175oi2r::after { 
+    div:has(> svg > path[d^="M13.873 3.805C21.21"])::after { 
         order: -1;
         height: var(--tweak-option-use-title);
         content: var(--tweak-option-title);
@@ -602,6 +618,16 @@
     /*[aria-label='New post']:not(.r-wzwllv) {
         box-shadow: var(--tweak-shadow);
     }*/
+    
+    
+    /* metrics */
+    
+    /* numbers next to icons */
+    [data-testid="likeCount"], [data-testid="repostCount"], [data-testid="replyBtn"] > div {
+        visibility: var(--tweak-show-metrics);
+    }
+    
+    /* i
 
     /* 💬 POSTS */
 
@@ -987,6 +1013,8 @@
     a[href^="/profile/"] button div[style*='font-weight: 600'] {
         color: var(--tweak-bg) !important;
     }
+    a[href^="/profile/"] button[aria-label]:has(div[style*='font-weight: 600']) { border-radius: 32px;  }
+    a[href^="/profile/"] button[aria-label]:has(div[style*='font-weight: 600']) div { color: var(--tweak-fg) !important; }
 
     /* 📋 LISTS */
 
@@ -1013,10 +1041,12 @@
 
     /* 🔔 NOTIFICATIONS */
 
-    /* notifications number in Home sidebar */
-    [aria-label="Notifications"] > div > div { color: var(--tweak-fg) !important;}
+    /* notifications number in Home sidebar. this is so clunky */
+    [aria-label="Notifications"] > div > div, [aria-label="Notifications"] > div > div > div { 
+        color: var(--tweak-show-notifications) !important;
+    }
     
-    div[aria-label*="unread items"] {
+    div[aria-label*="unread item"] {
       background-color: var(--tweak-accent) !important;
       color: var(--tweak-fg) !important;
     }
@@ -1189,3 +1219,5 @@
     [data-testid="settingsScreen"] button.css-175oi2r.r-1i6wzkk.r-lrvibr.r-1loqt21.r-1otgn73:hover, div.css-175oi2r.r-105ug2t div.css-175oi2r.r-1loqt21.r-1otgn73 :hover, [data-testid^="switchToAccountBtn"] > div:hover { 
         background-color: var(--tweak-bg-tertiary) !important; 
     }
+
+}

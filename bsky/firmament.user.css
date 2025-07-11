@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3.4
+@version        0.3.5
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
 @license        MIT
 @match          *://*.bsky.app/*
@@ -12,6 +12,14 @@
 @var text tweak-option-title "Custom Title (in quotes)" "'🌙'"
 @var text tweak-option-font "Font Family (in quotes)" "'InterVariable'"
 @var number tweak-option-line-height "Line Height" [1.3, null, null, 0.05]
+@var select tweak-option-show-notifications "Hide Notifications Number" {
+  "no:No*": "var(--tweak-fg)",
+  "yes:Yes": "transparent"
+}
+@var select tweak-option-show-metrics "Hide Metrics" {
+  "no:No*": "visible",
+  "yes:Yes": "hidden"
+}
 @var select tweak-option-text-transform "Text Transform" {
   "none:None": "revert",
   "lowercase:lowercase": "lowercase",
@@ -58,8 +66,12 @@
 
         --tweak-option-bg-dark: #000f10;
         --tweak-option-text-dark: #e9daca;
+        
+        --tweak-option-show-notifications: var(--tweak-fg);
+        --tweak-option-show-metrics: visible;
     } 
 */
+
 
 /*
     Section headings (search for the emoji to jump to them quickly!)
@@ -94,6 +106,8 @@
         --tweak-radius: 14px;
         --tweak-blur: blur(30px);
         --tweak-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px;
+        --tweak-show-notifications: var(--tweak-option-show-notifications);
+        --tweak-show-metrics: var(--tweak-option-show-metrics);
 
         --background: var(--tweak-bg) !important;
         --backgroundLight: var(--tweak-bg) !important;
@@ -489,16 +503,16 @@
     /* 🏠 FEED */
 
     /* custom title text */
-    .css-175oi2r.r-1ljd8xs.r-13l2t4g.r-5laclt.r-33ulu8:nth-child(1) div.css-175oi2r { 
+    div svg:has(> path[d^="M13.873 3.805C21.21"]) { 
         width: 100% !important; 
         align-items: center; justify-content: center;
     }
 
-    .css-175oi2r.r-1ljd8xs.r-13l2t4g.r-5laclt.r-33ulu8 .css-175oi2r svg:has(> path[d^="M13.873 3.805C21.21"])  {  
+    div svg:has(> path[d^="M13.873 3.805C21.21"])  {  
         display: var(--tweak-option-use-title); 
     }
     
-    .css-175oi2r.r-1ljd8xs.r-13l2t4g.r-5laclt.r-33ulu8:nth-child(1) div.css-175oi2r::after { 
+    div:has(> svg > path[d^="M13.873 3.805C21.21"])::after { 
         order: -1;
         height: var(--tweak-option-use-title);
         content: var(--tweak-option-title);
@@ -604,6 +618,16 @@
     /*[aria-label='New post']:not(.r-wzwllv) {
         box-shadow: var(--tweak-shadow);
     }*/
+    
+    
+    /* metrics */
+    
+    /* numbers next to icons */
+    [data-testid="likeCount"], [data-testid="repostCount"], [data-testid="replyBtn"] > div {
+        visibility: var(--tweak-show-metrics);
+    }
+    
+    /* i
 
     /* 💬 POSTS */
 
@@ -989,6 +1013,8 @@
     a[href^="/profile/"] button div[style*='font-weight: 600'] {
         color: var(--tweak-bg) !important;
     }
+    a[href^="/profile/"] button[aria-label]:has(div[style*='font-weight: 600']) { border-radius: 32px;  }
+    a[href^="/profile/"] button[aria-label]:has(div[style*='font-weight: 600']) div { color: var(--tweak-fg) !important; }
 
     /* 📋 LISTS */
 
@@ -1015,10 +1041,12 @@
 
     /* 🔔 NOTIFICATIONS */
 
-    /* notifications number in Home sidebar */
-    [aria-label="Notifications"] > div > div { color: var(--tweak-fg) !important;}
+    /* notifications number in Home sidebar. this is so clunky */
+    [aria-label="Notifications"] > div > div, [aria-label="Notifications"] > div > div > div { 
+        color: var(--tweak-show-notifications) !important;
+    }
     
-    div[aria-label*="unread items"] {
+    div[aria-label*="unread item"] {
       background-color: var(--tweak-accent) !important;
       color: var(--tweak-fg) !important;
     }
