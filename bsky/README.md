@@ -3,7 +3,7 @@
 
 A customisable theme for [Bluesky Social](https://bsky.app) built upon/based on [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
-## Latest version: [v0.3.5](https://github.com/haraiva/userstyles/releases/tag/firmament-v0.3.5)
+## Latest version: [v0.3.6](https://github.com/haraiva/userstyles/releases/tag/firmament-v0.3.6)
 
 You can freely customise the colours in the Stylus UserCSS configuration menu, or if you just want to borrow some of my colour schemes you can check out my [readymade palettes](#readymade-palettes) below.
 
