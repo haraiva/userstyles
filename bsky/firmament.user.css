@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://bsky.app/profile/haraiva.bsky.app
-@version        0.3.5
+@version        0.3.6
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social based on @fenny.zone's "Better Bluesky" userstyle.
 @license        MIT
 @match          *://*.bsky.app/*
@@ -104,7 +104,7 @@
         --tweak-accent-more-translucent: color-mix(in srgb, var(--tweak-accent) 25%, transparent);
 
         --tweak-radius: 14px;
-        --tweak-blur: blur(30px);
+        --tweak-blur: blur(4px);
         --tweak-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px;
         --tweak-show-notifications: var(--tweak-option-show-notifications);
         --tweak-show-metrics: var(--tweak-option-show-metrics);
@@ -117,31 +117,89 @@
     /* override inline light mode colors */
     @media (not (prefers-color-scheme: dark)) {
         [style*="background-color: rgb(255, 255, 255)"],
-        [style*="background-color: rgb(246, 247, 249)"] {
+        [style*="background-color: rgb(246, 247, 249)"]
+        {
             background-color: var(--tweak-bg) !important;
         }
-        [style*="background-color: rgb(226, 231, 236)"],
-        [style*="background-color: rgb(240, 242, 245)"],
-        [style*="background-color: rgb(241, 243, 245)"],
-        [style*="background-color: rgb(243, 243, 248)"] {
+        
+        [style*="background-color: rgb(239, 242, 246)"],
+        [style*="background-color: rgb(249, 250, 251)"],
+        [style*="background-color: rgb(220, 226, 234)"],
+        [style*="background-color: rgb(204, 225, 255)"],
+        [style*="background-color: rgb(229, 240, 255)"],
+        [style*="background-color: rgb(245, 249, 255)"]
+        {
             background-color: var(--tweak-bg-secondary) !important;
         }
+        [style*="background-color: rgb(0, 106, 255)"],
+        [style*="background-color: rgb(49, 63, 84)"] {
+            background-color: var(--tweak-accent) !important;
+        }
+        [style*="background-color: rgb(0, 89, 214)"],
+        [style*="background-color: rgb(168, 204, 255)"]
+        {
+            background-color: var(--tweak-accent-translucent) !important;
+        }
+        
+        [style*="color: rgb(255, 255, 255)"],
+        [style*="color: rgb(64, 81, 104)"],
+        [style*="color: rgb(35, 46, 62)"],
+        [style*="color: rgb(0, 57, 138)"],
+        [style*="color: rgb(117, 175, 255)"]
+        {
+            color: var(--tweak-fg) !important;
+        }
+        
+        [style*="color: rgb(0, 0, 0)"],
         [style*="color: rgb(7, 10, 13)"],
         [style*="color: rgb(11, 15, 20)"],
         [style*="color: rgb(37, 51, 66)"], 
-        [style*="color:rgb(11, 15, 20)"] {
+        [style*="color: rgb(11, 15, 20)"],
+        [style*="color: rgb(135, 152, 176)"]
+        {
             color: var(--tweak-fg) !important;
         }
         [style*="color: rgb(66, 87, 108)"],
         [style*="color: rgb(102, 127, 153)"],
-        [style*="color: rgb(111, 134, 159)"] {
+        [style*="color: rgb(111, 134, 159)"],
+        [style*="color: rgb(102, 123, 153)"],
+        [style*="color: rgb(165, 178, 197)"]{
             color: var(--tweak-fg-translucent) !important;
         }
-
+        
+        [style*="color: rgb(0, 106, 255)"],
+        [style*="color: rgb(0, 89, 214)"]
+        {
+            color: var(--tweak-accent) !important;
+        }
+        [style*="text-decoration-color: rgb(0, 0, 0)"],
+        [style*="text-decoration-color: rgb(64, 81, 104)"],
+        [style*="text-decoration-color: rgb(0, 106, 255)"] 
+        {
+            text-decoration-color: var(--tweak-accent) !important;
+        }
+        
         [fill="#000000" i],
         [fill="#545664" i],
-        [fill="#71768A" i] {
+        [fill="#71768A" i],
+        [fill="#A5B2C5" i]
+        {
             fill: var(--tweak-fg-translucent) !important;
+        }
+        
+        [fill="#FFFFFF" i], 
+        [fill="#667B99" i],
+        [fill="#405168" i]
+        {
+            fill: var(--tweak-fg) !important;
+        }
+        
+        [fill="#006AFF" i],
+        [fill="#526580" i],
+        [fill="#8798B0" i],
+        [fill="#0059D6" i]
+        {
+            fill: var(--tweak-accent) !important;
         }
     }
 
@@ -156,49 +214,99 @@
             --tweak-bg-tertiary: color-mix(in srgb, var(--tweak-bg) 75%, white);
         }
         [style*="background-color: rgb(0, 0, 0)"],
-        [style*="background-color: rgb(8, 10, 12)"],
-        [style*="background-color: rgb(22, 30, 39)"],
-        [style*="background-color: rgb(28, 38, 49)"] {
+        [style*="background-color: rgb(21, 29, 40)"],
+        [style*="background-color: rgb(18, 33, 54)"]
+        {
             background-color: var(--tweak-bg) !important;
         }
-        [style*="background-color: rgb(30, 41, 54)"],
-        [style*="background-color: rgb(38, 53, 68)"],
-        [style*="background-color: rgb(33, 45, 59)"], 
-        [style*="background-color: rgb(21, 52, 85)"], 
-        [style*="background-color: rgb(10, 95, 186)"]{
+        
+        [style*="background-color: rgb(34, 46, 63)"],
+        [style*="background-color: rgb(28, 39, 54)"],
+        [style*="background-color: rgb(44, 58, 78)"],
+        [style*="background-color: rgb(18, 41, 73)"]{
             background-color: var(--tweak-bg-secondary) !important;
         }
         
-        [style*="background-color: rgb(46, 64, 82)"]{ 
+        [style*="background-color: rgb(18, 52, 100)"],
+        [style*="background-color: rgb(14, 68, 144)"],
+        [style*="background-color: rgb(77, 151, 255)"]
+        {
+            background-color: var(--tweak-accent-translucent) !important;
+        }
+        
+        [style*="color: rgb(15, 115, 255)"],
+        [style*="color: rgb(77, 151, 255)"]
+        {
+            color: var(--tweak-accent) !important;
+        }
+        
+        [style*="background-color: rgb(46, 64, 82)"],
+        [style*="background-color: rgb(15, 115, 255)"],
+        [style*="background-color: rgb(195, 205, 218)"]
+        { 
             background-color: var(--tweak-accent) !important;
         }
         
-        [style*="color: rgb(215, 221, 228)"],
-        [style*="color: rgb(255, 255, 255)"], 
-        [style*="color: rgb(241, 243, 245)"] {
+        [style*="color: rgb(88, 108, 137)"],
+        [style*="color: rgb(226, 231, 238)"],
+        [style*="color: rgb(10, 82, 184)"],
+        [style*="color: rgb(255, 255, 255)"] {
             color: var(--tweak-fg) !important;
         }
         
-        [style*="color: rgb(174, 187, 201)"],
-        [style*="color: rgb(154, 170, 188)"],
-        [style*="color: rgb(108, 132, 157)"],
-        [style*="color: rgb(120, 142, 165)"], 
-        [style*="color: rgb(91, 119, 149)"] {
+        [style*="color: rgb(171, 184, 201)"],
+        [style*="color: rgb(128, 181, 255)"],
+        [style*="color: rgb(111, 131, 159)"],
+        [style*="color: rgb(72, 91, 117)"],
+        [style*="color: rgb(21, 29, 40)"]
+        {
             color: var(--tweak-fg-translucent) !important;
         }
 
-        [style*="color: rgb(147, 165, 183)"] {
+        [style*="color: rgb(147, 165, 183)"],
+        [style*="color: rgb(141, 157, 180)"]
+        {
             color: var(--tweak-fg-translucent) !important;
         }
         
-        [style*="background-color: rgb(76, 162, 254)"] {
+        [style*="background-color: rgb(76, 162, 254)"],
+        [style*="background-color: rgb(88, 108, 137)"]
+        {
             background-color: var(--tweak-fg-translucent) !important;
         }
         
         [fill="#FFFFFF" i],
         [fill="#B9B9C1" i],
-        [fill="#707489" i] {
+        [fill="#707489" i],
+        [fill="#80B5FF" i],
+        [fill="#C3CDDA" i],
+        [fill="#485B75" i]
+        {
             fill: var(--tweak-fg-translucent) !important;
+        }
+        
+        [fill="#0F73FF" i],
+        [fill="#8D9DB4" i],
+        [fill="#4D97FF" i],
+        [fill="#586C89" i]
+        {
+            fill: var(--tweak-accent);
+        }
+        
+        [fill="#6F839F" i],
+        [fill="#ABB8C9" i]{
+            fill: var(--tweak-fg);
+        }
+        
+        [style*="border-color: rgb(14, 68, 144)"] {
+            border-color: var(--tweak-fg-translucent);
+        }
+        
+        [style*="text-decoration-color: rgb(255, 255, 255);"],
+        [style*="text-decoration-color: rgb(171, 184, 201);"],
+        [style*="text-decoration-color: rgb(15, 115, 255);"]
+        {
+            text-decoration-color: var(--tweak-accent) !important;
         }
     }
 
@@ -386,7 +494,7 @@
         /* tablet top bar */ div:has(> [data-testid="homeScreenFeedTabs"]),
         /* mobile bottom bar */ [style*="bottom: 0px; left: 0px; right: 0px;"],
         /* profile top bar */ [data-testid="profilePager"] {
-            background: var(--tweak-bg-secondary) !important;
+            background-color: var(--tweak-bg-secondary) !important;
             -webkit-backdrop-filter: none !important;
             backdrop-filter: none !important;
         }
@@ -543,9 +651,9 @@
        
     }
 
-    [data-testid^="homeScreenFeedTabs-selector-"] div,
-    [data-testid^="profilePager-selector-"] div,
-    [data-testid^="undefined-selector-"] div {
+    [data-testid^="homeScreenFeedTabs-"] div,
+    [data-testid^="profilePager-"] div,
+    [data-testid^="undefined-"] div {
         /* padding-bottom: 0; */
          border-color: var(--tweak-accent) !important;
     }
@@ -585,7 +693,11 @@
     }
 
     /* compose button */
-    [aria-label='New post'], [aria-label="New chat"] {
+    
+    [aria-label="Compose new post"] div {
+        mix-blend-mode: multiply;
+    }
+/*     [aria-label='New post'], [aria-label="New chat"] {
         cursor: pointer;
          transition: all 125ms;
     }
@@ -603,8 +715,8 @@
     [aria-label='New post'] div,
     [aria-label='New post'] svg {
         color: var(--tweak-bg);
-        /* stroke: var(--tweak-bg); */
-    }
+        stroke: var(--tweak-bg);
+    } */
 
     /* desktop compose button and other buttons, new posts badge */
     .r-wzwllv {
@@ -1221,3 +1333,4 @@
     }
 
 }
+
