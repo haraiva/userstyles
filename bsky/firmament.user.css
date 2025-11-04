@@ -1,17 +1,17 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.0
+@version        1.0.1
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
 @match          *://*.bsky.app/*
 
 // COLOUR PALETTE
-@var color option-accent "Accent" #5f8e76
 @var color option-bg "Background" #000f10
 @var color option-fg "Text" #e9daca
 @var color option-border "Border" #396a51
+@var color option-accent "Accent" #5f8e76
 
 @var select option-theme "Theme" {
     'Custom*': 'custom; --accent: var(--option-accent); --bg: var(--option-bg); --fg: var(--option-fg); --border: var(--option-border); ',
@@ -25,6 +25,12 @@
     'Cohost': 'cohost; --option-accent: #83254f; --option-bg: #191919; --option-fg: #fff1df; --option-border: #ffab5c;',
     'Gruvbox Dark': 'gruvbox-dark; --option-accent: #b16286; --option-bg: #282828; --option-fg: #ebdbb2; --option-border: #bdae93;',
     'Gruvbox Light': 'gruvbox-light; --option-accent: #98971a; --option-bg: #ebdbb2; --option-fg: #3c3836; --option-border: #bdae93;'
+}
+
+// ACCENT TEXT
+@var select option-accent-fg "Accent Text" {
+    "Same as Text": "var(--fg)",
+    "Same as Background": "var(--bg)"
 }
 
 // BORDER
@@ -68,7 +74,7 @@
   "hide:Hide": "none",
 }
 @var select hide-notifications-number "New notifications number" {
-  "show:Show*": "var(--fg)",
+  "show:Show*": "var(--accent-fg)",
   "hide:Hide": "transparent",
 }
 
@@ -116,6 +122,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         --accent: var(--option-accent);
         --accent-translucent: color-mix(in srgb, var(--accent) 50%, transparent);
         --accent-more-translucent: color-mix(in srgb, var(--accent) 25%, transparent);
+        --accent-fg: var(--option-accent-fg);
+        --accent-fg-translucent: color-mix(in srgb, var(--accent-fg) 65%, transparent);
         
         --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
         --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
@@ -253,7 +261,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     button[aria-label="Follow"], 
     button[aria-label="Follow back"], 
     button[data-testid="followBtn"] { 
-        > div { color: var(--fg) !important; }
+        > div { color: var(--accent-fg) !important; }
+        > div:has(svg) path { fill: var(--accent-fg-translucent) !important}
         background-color: var(--accent) !important; 
         &:hover { background-color: var(--accent-translucent) !important;  }
     }
@@ -269,6 +278,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     button[aria-label^="Save"],
     button[aria-label="Done"]{ 
         background-color: var(--accent) !important;
+        div { color: var(--accent-fg) !important; }
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
@@ -280,6 +290,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [aria-label="Change password dialog"] [aria-label="Request code"],
     [data-testid="createAccountButton"] {
         background-color: var(--accent) !important;
+         > div { color: var(--accent-fg) !important; }
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
@@ -287,6 +298,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     button[aria-label="Add this feed to your feeds"],
     div[role="dialog"] > div button[aria-label="Pin feed"][style*="border-radius: 8px"] {
         background-color: var(--accent) !important;
+        > div { color: var(--accent-fg) !important; }
+        > div:has(svg) path { fill: var(--accent-fg-translucent) !important}
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
@@ -312,13 +325,13 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [aria-label="View this user's verifications"] svg,
     svg:has(circle + path[d^="M17.659 8.175a1.361"]) { 
         circle { fill: var(--accent) !important; }
-        path { fill: var(--fg) !important; }
+        path { fill: var(--accent-fg) !important; }
     }
     /* scalloped checkmark */
     [aria-label="View this user's verifications"] svg,
     svg:has(path + path[d^="M17.861 8.26a1.438"]) { 
         path:first-child { fill: var(--accent) !important; }
-        path:last-child { fill: var(--fg) !important; }
+        path:last-child { fill: var(--accent-fg) !important; }
     }
     
     /* 🪟 POP-UPS */
@@ -336,6 +349,9 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         background-color: var(--bg) !important;
         [data-testid="userAddRemoveListsModal"] > div > span { color: var(--accent) !important;}
     }
+    
+    /* drop to add images pop up */
+    div:has(> div > [data-testid="composePostView"]) + div[style*="visibility: initial"] > div { background-color: var(--bg) !important; }
     
     /* header for list and chat user select */
     div[role="dialog"] div:has(div > div > input) { background-color: var(--bg) !important; }
@@ -429,7 +445,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* post button */
     button[data-testid="composerPublishBtn"] {
             background-color: var(--accent) !important;
-            > div { color: var(--fg) !important; }
+            > div { color: var(--accent-fg) !important; }
             &[aria-disabled="true"]:hover { background-color: var(--accent) !important; }
             &:hover { background-color: var(--accent-translucent) !important; }
     }
@@ -569,6 +585,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* INTERESTS SETTINGS hacky as hell but ah well */
     div[aria-checked="true"] > div[style*="border-radius: 999px"]:has(> div[style*="font"]) { 
         background-color: var(--accent) !important; 
+        > div { color: var(--accent-fg) !important}
         &:hover {  background-color: var(--accent-translucent) !important; }
     }
     
@@ -621,20 +638,21 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [aria-label="Compose new post"] { 
         background-color: var(--accent) !important; 
         &:hover { background-color: var(--accent-translucent) !important;  }
-        > div:last-child { color: var(--fg) !important; font-weight: bold !important;  }
+        > div:has(svg) path { fill: var(--accent-fg-translucent) !important; }
+        > div:last-child { color: var(--accent-fg) !important; font-weight: bold !important; }
     }
     
     /* compose post round button */
     [data-testid="composeFAB"] > div {
         background: var(--accent) !important;
-        > svg > path { stroke: var(--fg) !important; }
-        > svg > line { stroke: var(--fg) !important; }
+        > svg > path { stroke: var(--accent-fg) !important; }
+        > svg > line { stroke: var(--accent-fg) !important; }
     }
     
     /* new chat round button */
     [data-testid="newChatFAB"] > div {
         background: var(--accent) !important;
-        > svg > path { fill: var(--fg) !important; }
+        > svg > path { fill: var(--accent-fg) !important; }
     }
     
     /* section headers */
@@ -759,6 +777,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         /* icons */
         svg {
             /* repost colour */
+            path[fill="#09B35E" i],
             path[fill="#0AC266" i] { fill: #0AC266 !important; }
             /* like colour */
             path[fill="#ec4899" i] { fill: #ec4899 !important; }
