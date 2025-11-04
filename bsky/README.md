@@ -13,8 +13,8 @@ A customisable theme for [Bluesky Social](https://bsky.app) inspired by [@fenny.
 4. [Credits](#credits)
 
 ## Features:
-🌈 Customisable colours: Background, text, accent, border.
-🎨 Themes: Pre-made colour schemes to choose from!
+🌈 Customisable colours: Background, text, accent, border.  
+🎨 Themes: Pre-made colour schemes to choose from!  
 💭 Customisable header symbol: Replace the Bluesky logo with a Unicode symbol or an emoji!  
 🔡 Customisable fonts: System fonts and active fonts. (Default is Inter, which is the default Bluesky font).  
 🪷 Hide metrics: For a peaceful numberless experience.
