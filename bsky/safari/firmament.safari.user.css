@@ -6,81 +6,53 @@
 @author         haraiva.bsky.social
 @license        MIT
 @match          *://*.bsky.app/*
-
-// COLOUR PALETTE
-@var color option-accent "Accent" #5f8e76
-@var color option-bg "Background" #000f10
-@var color option-fg "Text" #e9daca
-@var color option-border "Border" #396a51
-
-@var select option-theme "Theme" {
-    'Custom*': 'custom; --accent: var(--option-accent); --bg: var(--option-bg); --fg: var(--option-fg); --border: var(--option-border); ',
-    'Mossy Forest': 'forest; --option-accent: #5f8e76; --option-bg: #000f10; --option-fg: #e9daca; --option-border: #396a51;',
-    'Lilypad': 'lilypad; --option-accent: #f9c0a2; --option-bg: #81936f; --option-fg: #3e3020; --option-border: #f7ac66;',
-    'Nice Day': 'niceday; --option-accent: #c68043; --option-bg: #102a39; --option-fg: #d7cfc0; --option-border: #b9ffe5; ',
-    'Paperback': 'paperback; --option-accent: #b97f05; --option-bg: #dfd1c2; --option-fg: #2d2218; --option-border: #635d51;',
-    'Leatherbound': 'leatherbound; --option-accent: #996708; --option-bg: #171511; --option-fg: #e1c6a8; --option-border: #6f4405;',
-    'Marble': 'marble; --option-accent: #737b66; --option-bg: #baab9c; --option-fg: #2e3327; --option-border: #93806c;',
-    'Tequila Sunset': 'sunset; --option-accent: #d95e53; --option-bg: #1b0820; --option-fg: #d5bfb4; --option-border: #ff9d0b;',
-    'Cohost': 'cohost; --option-accent: #83254f; --option-bg: #191919; --option-fg: #fff1df; --option-border: #ffab5c;',
-    'Gruvbox Dark': 'gruvbox-dark; --option-accent: #b16286; --option-bg: #282828; --option-fg: #ebdbb2; --option-border: #bdae93;',
-    'Gruvbox Light': 'gruvbox-light; --option-accent: #98971a; --option-bg: #ebdbb2; --option-fg: #3c3836; --option-border: #bdae93;'
-}
-
-// BORDER
-@var range border-tint "Border tint" [25, 0, 100, 1, "%"]
-
-// CUSTOM TITLE
-@var select use-title "Use custom title?" {
-  "yes:Yes": "none",
-  "no:No": "0px"
-}
-@var select title "Title icon" {
-    "🌙": "'🌙'",
-    "☀️": "'☀️'",
-    "☁️": "'☁️'",
-    "🪐": "'🪐'",
-    "🌱": "'🌱'",
-    "☻": "'☻'",
-    "✦": "'✦'",
-    "❖": "'❖'",
-    "⁂": "'⁂'",
-    "❇︎": "'❇︎'",
-    "Custom*": "var(--custom-title)" 
-}
-@var text custom-title "Custom title icon (in quotes)" "'🦀'"
-
-// FONT SETTINGS
-@var select use-font "Use custom font?" {
-  "yes:Yes": "var(--font-family)",
-  "no:No*": "'InterVariable'"
-}
-@var text font-family "Typeface (in quotes)" "'Arial'"
-@var number line-height "Line height" [1.3, null, null, 0.05]
-
-// METRICS
-@var select hide-metrics "Metrics" {
-  "show:Show*": "inline",
-  "hide:Hide": "none"
-}
-@var select hide-notifications "New notifications" {
-  "show:Show*": "inline",
-  "hide:Hide": "none",
-}
-@var select hide-notifications-number "New notifications number" {
-  "show:Show*": "var(--fg)",
-  "hide:Hide": "transparent",
-}
-
-// ACCESSIBILITY
-@var select disable-outlines "Focus outlines" {
-  "hide:Hide*": "none",
-  "show:Show (keyboard navigation)": "1px auto"
-}
 ==/UserStyle== */
 
-/* 🚨📲🚨 if you're using Userscripts for iOS and Safari, use the Userscripts-friendly version of Firmament here: 
-https://github.com/haraiva/userstyles/tree/main/bsky/safari */
+
+/* 📌 USER SETTINGS */
+    /* Modify these as you wish! */
+:root{
+
+    /* COLOUR PALETTE */
+        /* Default palette. 
+        Install firmamement.themes.user.css for pre-made themes. Or you could copy the values over if you want? */
+    --option-accent: #5f8e76;
+    --option-bg: #000f10;
+    --option-fg: #e9daca;
+    --option-border: #396a51;
+        /* Value from 0% to 100% */
+    --border-tint: 25%;
+
+    /* CUSTOM TITLE */ 
+        /* Use custom title: none */
+        /* Use default Bsky title: 0px */
+    --use-title: none;
+        /* Icon in quotes */
+    --title: '🌙';
+
+    /* FONT SETTINGS */
+        /* Use custom font: var(--font-family) */
+        /* Use default Bsky font: 'InterVariable' */
+    --use-font: 'InterVariable';
+        /* Font name in quotes */
+    --font-family: 'Arial';
+    --line-height: 1.3;
+
+    /* METRICS */
+        /* Hide: none */
+        /* Show: inline */
+    --hide-metrics: inline;
+    --hide-notifications: inline;
+        /* Hide: transparent */
+        /* Show: var(--fg) */
+    --hide-notifications-number: var(--fg);
+
+    /* ACCESSIBILITY */
+        /* Hide: none */
+        /* Show (keyboard navigation): 1px auto */
+    --disable-outlines: none;
+}
+/* END OF USER SETTINGS */
 
 /*
     Section headings (search for the emoji to jump to them quickly!)
@@ -98,37 +70,35 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     📱 MOBILE
 */
 
-@-moz-document domain("bsky.app") {
+:root {
+    --theme: var(--option-theme);
     
-    :root {
-        --theme: var(--option-theme);
-        
-        --bg: var(--option-bg);
-        --bg-darker: color-mix(in srgb, var(--bg) 75%, black);
-        --bg-lighter: color-mix(in srgb, var(--bg) 75%, white);
-        --bg-translucent: color-mix(in srgb, var(--bg) 75%, transparent);
-        --bg-more-translucent: color-mix(in srgb, var(--bg)30%, transparent);
-        
-        --fg: var(--option-fg);
-        --fg-translucent: color-mix(in srgb, var(--fg) 65%, transparent);
-        --fg-more-translucent: color-mix(in srgb, var(--fg) 40%, transparent);
-        
-        --accent: var(--option-accent);
-        --accent-translucent: color-mix(in srgb, var(--accent) 50%, transparent);
-        --accent-more-translucent: color-mix(in srgb, var(--accent) 25%, transparent);
-        
-        --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
-        --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
-        
-        --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
-        --box-shadow: 0 0 40px black;
-        
-        /* override for all html.themes */
-        --text: var(--fg) !important;
-        --background: var(--bg !important);
-        --backgroundLight: var(--bg) !important;
-        background-color: var(--bg) !important; 
-    }
+    --bg: var(--option-bg);
+    --bg-darker: color-mix(in srgb, var(--bg) 75%, black);
+    --bg-lighter: color-mix(in srgb, var(--bg) 75%, white);
+    --bg-translucent: color-mix(in srgb, var(--bg) 75%, transparent);
+    --bg-more-translucent: color-mix(in srgb, var(--bg)30%, transparent);
+    
+    --fg: var(--option-fg);
+    --fg-translucent: color-mix(in srgb, var(--fg) 65%, transparent);
+    --fg-more-translucent: color-mix(in srgb, var(--fg) 40%, transparent);
+    
+    --accent: var(--option-accent);
+    --accent-translucent: color-mix(in srgb, var(--accent) 50%, transparent);
+    --accent-more-translucent: color-mix(in srgb, var(--accent) 25%, transparent);
+    
+    --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
+    --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
+    
+    --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
+    --box-shadow: 0 0 40px black;
+    
+    /* override for all html.themes */
+    --text: var(--fg) !important;
+    --background: var(--bg !important);
+    --backgroundLight: var(--bg) !important;
+    background-color: var(--bg) !important; 
+}
     
     /* resetting and overriding this mess */
     [style*="color"] {
@@ -990,4 +960,3 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         }
         
     }
-}

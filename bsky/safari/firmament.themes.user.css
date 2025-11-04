@@ -1,0 +1,110 @@
+/* ==UserStyle==
+@name           Firmament - Themes for Safari
+@namespace      https://github.com/haraiva/userstyles/tree/main/bsky
+@version        1.0.0
+@description    Themes for Firmament
+@author         haraiva.bsky.social
+@license        MIT
+@match          *://*.bsky.app/*
+==/UserStyle== */
+
+/* 📌 HOW TO: Uncomment the theme you'd like to use! */
+
+/* Mossy Forest */
+/*:root {
+	--theme: forest; 
+	--option-accent: #5f8e76 !important; 
+	--option-bg: #000f10 !important; 
+	--option-fg: #e9daca !important; 
+	--option-border: #396a51 !important;
+    --title: "🌙" !important;
+}*/
+
+/* Lilypad */
+/*:root {
+	--theme: lilypad;
+    --option-accent: #f9c0a2 !important; 
+    --option-bg: #81936f !important; 
+    --option-fg: #3e3020 !important; 
+    --option-border: #f7ac66 !important;
+    --title: "🌱" !important;
+}*/
+
+/* Nice Day */
+/*:root {
+	--theme: niceday; 
+	--option-accent: #c68043 !important; 
+	--option-bg: #102a39 !important; 
+	--option-fg: #d7cfc0 !important; 
+	--option-border: #b9ffe5 !important;
+    --title: "☀️" !important;
+}*/
+
+/* Paperback */
+/*:root {
+	--theme: paperback; 
+	--option-accent: #b97f05 !important; 
+	--option-bg: #dfd1c2 !important; 
+	--option-fg: #2d2218 !important; 
+	--option-border: #635d51 !important;
+    --title: "❖" !important;
+}*/
+
+/* Leatherbound */
+:root {
+	--theme: leatherbound; 
+	--option-accent: #996708 !important; 
+	--option-bg: #171511 !important; 
+	--option-fg: #e1c6a8 !important; 
+	--option-border: #6f4405 !important;
+    --title: "⁂" !important;
+}
+
+/* Marble */
+/*:root {
+	--theme: marble; 
+	--option-accent: #737b66 !important; 
+	--option-bg: #baab9c !important; 
+	--option-fg: #2e3327 !important; 
+	--option-border: #93806c !important;
+    --title: "✦" !important;
+}*/
+
+/* Tequila Sunset */
+/*:root {
+	--theme: sunset; 
+	--option-accent: #d95e53 !important; 
+	--option-bg: #1b0820 !important; 
+	--option-fg: #d5bfb4 !important; 
+	--option-border: #ff9d0b !important;
+    --title: "🍹" !important;
+}*/
+
+/* Cohost */
+/*:root {
+	--theme: cohost; 
+	--option-accent: #83254f !important; 
+	--option-bg: #191919 !important; 
+	--option-fg: #fff1df !important; 
+	--option-border: #ffab5c !important;
+}*/
+
+/* Gruvbox Dark */
+/*:root {
+	--theme: gruvbox-dark; 
+
+	--option-accent: #b16286 !important; 
+	--option-bg: #282828 !important; 
+	--option-fg: #ebdbb2 !important; 
+	--option-border: #bdae93 !important;
+}*/
+
+/* Gruvbox Light */
+/*:root {
+	--theme: gruvbox-light; 
+	--option-accent: #98971a !important; 
+	--option-bg: #ebdbb2 !important; 
+	--option-fg: #3c3836 !important; 
+	--option-border: #bdae93 !important;
+}*/
+

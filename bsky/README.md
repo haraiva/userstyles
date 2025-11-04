@@ -1,95 +1,70 @@
 # Firmament
-![preview of Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/all-preview.png)
+![preview of Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/firmament-collage.png)
 
-A customisable theme for [Bluesky Social](https://bsky.app) built upon/based on [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
+A customisable theme for [Bluesky Social](https://bsky.app) inspired by [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
-## Latest version: [v0.3.6](https://github.com/haraiva/userstyles/releases/tag/firmament-v0.3.6)
-
-You can freely customise the colours in the Stylus UserCSS configuration menu, or if you just want to borrow some of my colour schemes you can check out my [readymade palettes](#readymade-palettes) below.
+## Latest version: [v1.0.0](https://github.com/haraiva/userstyles/releases/tag/firmament-v1.0.0)
 
 **Table of Contents**
 1. [Features](#features)  
-2. [Installation](#installation)  
-3. [Readymade Palettes](#readymade-palettes)  
-	a. [mossy forest](#mossy-forest)  
-	b. [secondhand paperback](#secondhand-paperback)  
-	c. [nice day](#nice-day)  
-	d. [tequila sunset](#tequila-sunset)  
+2. [Installation](#installation) 
+3. [Configuration](#configuration) 
+3. [Themes](#themes)
 4. [Credits](#credits)
 
 ## Features:
-🌈 Customisable colours: Background, text, accent.  
-🌗 Light/Dark modes: Follows system settings.  
-🔡 Customisable fonts: System fonts and active fonts. Default is Inter, which is the default bsky font).  
-💭 Customisable header symbol: Accepts Emoji!  
-
-![preview of darkmodes in Firmament userscript](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/darkmode-preview.png)
+🌈 Customisable colours: Background, text, accent, border.
+🎨 Themes: Pre-made colour schemes to choose from!
+💭 Customisable header symbol: Replace the Bluesky logo with a Unicode symbol or an emoji!  
+🔡 Customisable fonts: System fonts and active fonts. (Default is Inter, which is the default Bluesky font).  
+🪷 Hide metrics: For a peaceful numberless experience.
 
 ## Installation
 Install using [Stylus](https://github.com/openstyles/stylus) on Chrome and Firefox, and the [Userscripts app](https://github.com/quoid/userscripts) on Safari (desktop and iOS). 
 
-See line 37 of the code for instructions on using it with Safari, or download the file in the [safari folder](https://github.com/haraiva/userstyles/tree/main/bsky/safari), customise it and chuck it into your Userscripts folder.
+Download the Safari version in the [safari folder](https://github.com/haraiva/userstyles/tree/main/bsky/safari), customise as you wish and chuck it into your Userscripts folder. 
 
-## Readymade Palettes
-Copy the few respective lines of code for each colour palette to replace lines 26-31 (the bit starting with `//🎨 COLOUR PALETTE: `) in the code.
+The Safari version has a separate file named `firmament.themes.user.css` which contains all the pre-made themes. To use one, simply uncomment the relevant code. :)
 
-For Safari: Download the file with the colour scheme of your choice in the [safari folder](https://github.com/haraiva/userstyles/tree/main/bsky/safari) and chuck it in your Userscripts folder.
+## Configuration
+To configure Firmament in the Stylus extension, simply click the gear icon ⚙ next to the userstyle name in the Stylus pop-up.
 
-### mossy forest
-The default colour scheme for Firmament; soothing warm greens.
-```
-//🎨 COLOUR PALETTE: mossy forest
-@var color tweak-option-accent "Accent" #5f8e76
-@var color tweak-option-bg "Light Mode Background" #e6ded4
-@var color tweak-option-text "Light Mode Text Color" #2f2b27
-@var color tweak-option-bg-dark "Dark Mode Background" #000f10
-@var color tweak-option-text-dark "Dark Mode Text Color" #e9daca
-```
-![preview of mossy forest theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/forest-preview.png)
+This is what the configuration menu looks like:
 
----
+![screenshot of configuration menu](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/firmament-configuration.png)
 
-### secondhand paperback
-A nice warm beige and goldenrod colour scheme.
-```
-//🎨 COLOUR PALETTE: secondhand paperback
-@var color tweak-option-accent "Accent" #b97f05
-@var color tweak-option-bg "Light Mode Background" #e6ddd3
-@var color tweak-option-text "Light Mode Text Color" #2d2823
-@var color tweak-option-bg-dark "Dark Mode Background" #212124
-@var color tweak-option-text-dark "Dark Mode Text Color" #d7cfc0
-```
-![preview of secondhand paperback theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/paperback-preview.png)
+## Themes
+Themes can easily be picked from the drop-down selection in the configuration menu in Stylus.
 
----
+For the Safari Userscript version, check out the [How To](https://github.com/haraiva/userstyles/tree/main/bsky/safari).
 
-### nice day
-Warmer blue tones for warmer blue tone appreciators.
-```
-//🎨 COLOUR PALETTE: nice day
-@var color tweak-option-accent "Accent" #1092a6
-@var color tweak-option-bg "Light Mode Background" #e6dfd3
-@var color tweak-option-text "Light Mode Text Color" #0c1e2f
-@var color tweak-option-bg-dark "Dark Mode Background" #102a39
-@var color tweak-option-text-dark "Dark Mode Text Color" #d7cfc0
-```
-![preview of nice day theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/niceday-preview.png)
+### Palettes
 
----
-
-### tequila sunset
-It's like you're really there.
-```
-//🎨 COLOUR PALETTE: tequila sunset
-@var color tweak-option-accent "Accent" #d95e53
-@var color tweak-option-bg "Light Mode Background" #fdf3e0
-@var color tweak-option-text "Light Mode Text Color" #380b43
-@var color tweak-option-bg-dark "Dark Mode Background" #1b0820
-@var color tweak-option-text-dark "Dark Mode Text Color" #d5bfb4
-```
-![preview of tequila sunset theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/sunset-preview.png)
+#### Mossy Forest
+![preview of Mossy Forest theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/mossyforest-palette.png)
+#### Lilypad
+![preview of Lilypad theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/lilypad-palette.png)
+#### Nice Day
+![preview of Nice Day theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/niceday-palette.png)
+#### Paperback
+![preview of Paperback theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/paperback-palette.png)
+#### Leatherbound
+![preview of Leatherbound theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/leatherbound-palette.png)
+#### Marble
+![preview of Marble theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/marble-palette.png)
+#### Tequila Sunset
+![preview of Tequila Sunset theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/tequilasunset-palette.png)
+#### Cohost
+![preview of Cohost theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/cohost-palette.png)
+#### Gruvbox Dark
+![preview of Gruvbox Dark theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/gruvboxdark-palette.png)
+#### Gruvbox Light
+![preview of Gruvbox Light theme](https://github.com/haraiva/userstyles/blob/main/bsky/screenshots/palettes/gruvboxlight-palette.png)
 
 ---
 
 ## Credits
-- based on ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky) by [@fenny.zone](https://bsky.app/profile/fenny.zone)
+- versions of Firmament before 1.0.0 were based on ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky) by [@fenny.zone](https://bsky.app/profile/fenny.zone). Firmament would not exist without Better Bluesky!
+- some of the themes are directly inspired by the many beautiful themes on [Ellipsus](https://ellipsus.com/), a writing webapp that I love using.
+- the Cohost theme is inspired by [Cohost.org](https://cohost.org/), a defunct yet beloved social media site.
+- the Gruvbox themes use values from the [gruvbox colour scheme](https://github.com/morhetz/gruvbox).
