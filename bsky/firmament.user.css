@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.1
+@version        1.0.2
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -69,11 +69,15 @@
   "show:Show*": "inline",
   "hide:Hide": "none"
 }
-@var select hide-notifications "New notifications" {
+@var select reply-marker "Reply marker" {
+  "show:Show*": "inline",
+  "hide:Hide": "none"
+}
+@var select hide-notifications "Notification marker" {
   "show:Show*": "inline",
   "hide:Hide": "none",
 }
-@var select hide-notifications-number "New notifications number" {
+@var select hide-notifications-number "Notification number" {
   "show:Show*": "var(--accent-fg)",
   "hide:Hide": "transparent",
 }
@@ -177,7 +181,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     div[style*="background: linear-gradient(to left"] { background: linear-gradient(to left, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
     div[style*="background: linear-gradient(to right"] { background: linear-gradient(to right, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
     div[style*="background: linear-gradient(to top"] { background: linear-gradient(to top, var(--bg) 0%, transparent 100%) !important; }
-    div[style*="background: linear-gradient(rgb()"] { background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%) !important; }
+    div[style*="background: linear-gradient(rgb("] { background: linear-gradient(var(--bg) 0%, transparent 100%) !important; }
     
     /* OPACITY */
     /* reset */
@@ -224,8 +228,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     .ProseMirror p.is-editor-empty:first-child::before { 
         color: var(--fg-translucent) !important; 
     }
-    
-    .ProseMirror p { color: var(--fg) !important; }
+    .ProseMirror p { color: var(--fg) !important}
     .ProseMirror span { color: var(--accent) !important; }
     
     /* input background */
@@ -284,11 +287,14 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     
     /* 'confirm' button of all sorts */
     button[data-testid="confirmBtn"],
-    button[aria-label^="Yes"],
+    /* change email and password */
     [aria-label*="email settings"] [aria-label^="Update"],
     [aria-label="Send email"],
     [aria-label="Change password dialog"] [aria-label="Request code"],
-    [data-testid="createAccountButton"] {
+    /* creating an account or logging in */
+    [data-testid="createAccountButton"],
+    [data-testid="loginNextButton"],
+    [aria-label="Continue to next step"]{
         background-color: var(--accent) !important;
          > div { color: var(--accent-fg) !important; }
         &:hover { background-color: var(--accent-translucent) !important; }
@@ -341,6 +347,16 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         background-color: #00000095 !important;
         button[style*="border-radius: 8px"] { background-color: var(--bg-darker) !important; }
         button[style*="border-radius: 8px"]:hover { background-color: var(--highlight) !important; }
+        
+        /* buttons to confirm an action */
+        button[aria-label^="Yes"],
+        button[aria-label="Discard"],
+        button[aria-label="Block"],
+        button[aria-label="Done"]
+        { 
+            background-color: var(--accent) !important; 
+            > div { color: var(--accent-fg) !important}
+        }
         [role="dialog"] { background-color: var(--bg) !important; box-shadow: var(--box-shadow) !important; }
     }
     
@@ -354,7 +370,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     div:has(> div > [data-testid="composePostView"]) + div[style*="visibility: initial"] > div { background-color: var(--bg) !important; }
     
     /* header for list and chat user select */
-    div[role="dialog"] div:has(div > div > input) { background-color: var(--bg) !important; }
+    div[role="dialog"] div:has(div > div > input) { background-color: var(--bg) !important; border-radius: 12px; }
     
     div[role="menu"] > div { 
         background-color: var(--bg) !important;
@@ -387,6 +403,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     
     /* profile preview */
     div[style*="will-change: transform"] > div { 
+         background-color: var(--bg) !important; border-radius: 12px;
         > div { background-color: var(--bg) !important; }
         
          a[href*="/profile/"] > div > div:last-child > div {
@@ -403,6 +420,26 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         
         a[href*="/known-followers"] div, 
         a[href*="/known-followers"] span { color: var(--fg-translucent) !important; }
+        
+        /* account deletion modal */
+        div:has([aria-label="Cancel account deletion"]) {
+            background-color: var(--bg) !important;
+            
+            button:has(+ button[aria-label="Cancel account deletion"]) { 
+                background-color: var(--bg) !important;
+                &:hover { background-color: var(--bg) !important; } 
+                > div {   
+                    background: var(--accent) !important; 
+                    div { color: var(--accent-fg) !important; }
+                    &:hover { background-color: var(--accent-translucent) !important; } 
+                    }
+            }
+                
+            button[aria-label="Cancel account deletion"] { 
+                background-color: var(--accent-more-translucent) !important; 
+                &:hover { background-color: var(--accent-translucent) !important; }
+            }
+        }
     
     /* languages */
     div:has(> [data-testid="contentLanguagesModal"]) { background-color: var(--bg) !important; }
@@ -569,7 +606,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     button[aria-label="Nobody"],
     button[aria-label="Mentioned users"],
     button[aria-label="Users you follow"],
-    button[aria-label="Your followers"] {
+    button[aria-label="Your followers"],
+    button[aria-label*='Users in']{
     
         &[aria-checked="false"] > div {
              background-color: var(--bg-darker) !important;
@@ -791,6 +829,19 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         }
     }
     
+    /* marker for posts with replies */
+    button[data-testid="replyBtn"]:not([aria-label="Reply (0 replies)"])::after {
+            display: var(--reply-marker);
+            content: '⋯';
+            font-size: 16px;
+            font-family: monospace !important;
+            color: var(--fg-translucent);
+            
+            position: absolute;
+            left: 9px;
+            top: 2.5px;
+        }
+    
     /* expanded post display name */
     [data-testid^="postThreadItem"] a[href^="/profile/"] > div > div > div {
         /* display name */
@@ -946,6 +997,13 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* banner image */
     [data-testid="userBannerFallback"],
     [data-testid="userBannerImage"] { background-color: var(--bg-darker) !important; }
+    
+    /* back button */
+    button[aria-label="Back"] > div {
+        background-color: var(--bg-translucent) !important;
+        svg path { fill: var(--fg) !important;}
+        &:hover { background-color: var(--bg-more-translucent) !important; }
+    }
     
     /* description */
     [data-testid="profileHeaderDescription"] a {

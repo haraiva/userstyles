@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.0
+@version        1.0.2
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -46,6 +46,7 @@
         /* Hide: none */
         /* Show: inline */
     --hide-metrics: inline;
+    --reply-marker: none;
     --hide-notifications: inline;
         /* Hide: transparent */
         /* Show: var(--accent-fg) */
@@ -75,34 +76,36 @@
 */
 
 :root {
-    --theme: var(--option-theme);
-    
-    --bg: var(--option-bg);
-    --bg-darker: color-mix(in srgb, var(--bg) 75%, black);
-    --bg-lighter: color-mix(in srgb, var(--bg) 75%, white);
-    --bg-translucent: color-mix(in srgb, var(--bg) 75%, transparent);
-    --bg-more-translucent: color-mix(in srgb, var(--bg)30%, transparent);
-    
-    --fg: var(--option-fg);
-    --fg-translucent: color-mix(in srgb, var(--fg) 65%, transparent);
-    --fg-more-translucent: color-mix(in srgb, var(--fg) 40%, transparent);
-    
-    --accent: var(--option-accent);
-    --accent-translucent: color-mix(in srgb, var(--accent) 50%, transparent);
-    --accent-more-translucent: color-mix(in srgb, var(--accent) 25%, transparent);
-    
-    --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
-    --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
-    
-    --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
-    --box-shadow: 0 0 40px black;
-    
-    /* override for all html.themes */
-    --text: var(--fg) !important;
-    --background: var(--bg !important);
-    --backgroundLight: var(--bg) !important;
-    background-color: var(--bg) !important; 
-}
+        --theme: var(--option-theme);
+        
+        --bg: var(--option-bg);
+        --bg-darker: color-mix(in srgb, var(--bg) 75%, black);
+        --bg-lighter: color-mix(in srgb, var(--bg) 75%, white);
+        --bg-translucent: color-mix(in srgb, var(--bg) 75%, transparent);
+        --bg-more-translucent: color-mix(in srgb, var(--bg)30%, transparent);
+        
+        --fg: var(--option-fg);
+        --fg-translucent: color-mix(in srgb, var(--fg) 65%, transparent);
+        --fg-more-translucent: color-mix(in srgb, var(--fg) 40%, transparent);
+        
+        --accent: var(--option-accent);
+        --accent-translucent: color-mix(in srgb, var(--accent) 50%, transparent);
+        --accent-more-translucent: color-mix(in srgb, var(--accent) 25%, transparent);
+        --accent-fg: var(--option-accent-fg);
+        --accent-fg-translucent: color-mix(in srgb, var(--accent-fg) 65%, transparent);
+        
+        --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
+        --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
+        
+        --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
+        --box-shadow: 0 0 40px black;
+        
+        /* override for all html.themes */
+        --text: var(--fg) !important;
+        --background: var(--bg !important);
+        --backgroundLight: var(--bg) !important;
+        background-color: var(--bg) !important; 
+    }
     
     /* resetting and overriding this mess */
     [style*="color"] {
@@ -143,7 +146,7 @@
     div[style*="background: linear-gradient(to left"] { background: linear-gradient(to left, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
     div[style*="background: linear-gradient(to right"] { background: linear-gradient(to right, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
     div[style*="background: linear-gradient(to top"] { background: linear-gradient(to top, var(--bg) 0%, transparent 100%) !important; }
-    div[style*="background: linear-gradient(rgb()"] { background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%) !important; }
+    div[style*="background: linear-gradient(rgb("] { background: linear-gradient(var(--bg) 0%, transparent 100%) !important; }
     
     /* OPACITY */
     /* reset */
@@ -190,8 +193,7 @@
     .ProseMirror p.is-editor-empty:first-child::before { 
         color: var(--fg-translucent) !important; 
     }
-    
-    .ProseMirror p { color: var(--fg) !important; }
+    .ProseMirror p { color: var(--fg) !important}
     .ProseMirror span { color: var(--accent) !important; }
     
     /* input background */
@@ -250,11 +252,14 @@
     
     /* 'confirm' button of all sorts */
     button[data-testid="confirmBtn"],
-    button[aria-label^="Yes"],
+    /* change email and password */
     [aria-label*="email settings"] [aria-label^="Update"],
     [aria-label="Send email"],
     [aria-label="Change password dialog"] [aria-label="Request code"],
-    [data-testid="createAccountButton"] {
+    /* creating an account or logging in */
+    [data-testid="createAccountButton"],
+    [data-testid="loginNextButton"],
+    [aria-label="Continue to next step"]{
         background-color: var(--accent) !important;
          > div { color: var(--accent-fg) !important; }
         &:hover { background-color: var(--accent-translucent) !important; }
@@ -307,6 +312,16 @@
         background-color: #00000095 !important;
         button[style*="border-radius: 8px"] { background-color: var(--bg-darker) !important; }
         button[style*="border-radius: 8px"]:hover { background-color: var(--highlight) !important; }
+        
+        /* buttons to confirm an action */
+        button[aria-label^="Yes"],
+        button[aria-label="Discard"],
+        button[aria-label="Block"],
+        button[aria-label="Done"]
+        { 
+            background-color: var(--accent) !important; 
+            > div { color: var(--accent-fg) !important}
+        }
         [role="dialog"] { background-color: var(--bg) !important; box-shadow: var(--box-shadow) !important; }
     }
     
@@ -320,7 +335,7 @@
     div:has(> div > [data-testid="composePostView"]) + div[style*="visibility: initial"] > div { background-color: var(--bg) !important; }
     
     /* header for list and chat user select */
-    div[role="dialog"] div:has(div > div > input) { background-color: var(--bg) !important; }
+    div[role="dialog"] div:has(div > div > input) { background-color: var(--bg) !important; border-radius: 12px; }
     
     div[role="menu"] > div { 
         background-color: var(--bg) !important;
@@ -353,6 +368,7 @@
     
     /* profile preview */
     div[style*="will-change: transform"] > div { 
+         background-color: var(--bg) !important; border-radius: 12px;
         > div { background-color: var(--bg) !important; }
         
          a[href*="/profile/"] > div > div:last-child > div {
@@ -369,6 +385,26 @@
         
         a[href*="/known-followers"] div, 
         a[href*="/known-followers"] span { color: var(--fg-translucent) !important; }
+        
+        /* account deletion modal */
+        div:has([aria-label="Cancel account deletion"]) {
+            background-color: var(--bg) !important;
+            
+            button:has(+ button[aria-label="Cancel account deletion"]) { 
+                background-color: var(--bg) !important;
+                &:hover { background-color: var(--bg) !important; } 
+                > div {   
+                    background: var(--accent) !important; 
+                    div { color: var(--accent-fg) !important; }
+                    &:hover { background-color: var(--accent-translucent) !important; } 
+                    }
+            }
+                
+            button[aria-label="Cancel account deletion"] { 
+                background-color: var(--accent-more-translucent) !important; 
+                &:hover { background-color: var(--accent-translucent) !important; }
+            }
+        }
     
     /* languages */
     div:has(> [data-testid="contentLanguagesModal"]) { background-color: var(--bg) !important; }
@@ -535,7 +571,8 @@
     button[aria-label="Nobody"],
     button[aria-label="Mentioned users"],
     button[aria-label="Users you follow"],
-    button[aria-label="Your followers"] {
+    button[aria-label="Your followers"],
+    button[aria-label*='Users in']{
     
         &[aria-checked="false"] > div {
              background-color: var(--bg-darker) !important;
@@ -757,6 +794,19 @@
         }
     }
     
+    /* marker for posts with replies */
+    button[data-testid="replyBtn"]:not([aria-label="Reply (0 replies)"])::after {
+            display: var(--reply-marker);
+            content: '⋯';
+            font-size: 16px;
+            font-family: monospace !important;
+            color: var(--fg-translucent);
+            
+            position: absolute;
+            left: 9px;
+            top: 2.5px;
+        }
+    
     /* expanded post display name */
     [data-testid^="postThreadItem"] a[href^="/profile/"] > div > div > div {
         /* display name */
@@ -912,6 +962,13 @@
     /* banner image */
     [data-testid="userBannerFallback"],
     [data-testid="userBannerImage"] { background-color: var(--bg-darker) !important; }
+    
+    /* back button */
+    button[aria-label="Back"] > div {
+        background-color: var(--bg-translucent) !important;
+        svg path { fill: var(--fg) !important;}
+        &:hover { background-color: var(--bg-more-translucent) !important; }
+    }
     
     /* description */
     [data-testid="profileHeaderDescription"] a {
