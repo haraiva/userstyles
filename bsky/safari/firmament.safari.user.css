@@ -1,11 +1,11 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.2
+@version        1.0.3
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
-@match          *://*.bsky.app/*
+@match          https://bsky.app/*
 ==/UserStyle== */
 
 
@@ -46,8 +46,10 @@
         /* Hide: none */
         /* Show: inline */
     --hide-metrics: inline;
-    --reply-marker: none;
     --hide-notifications: inline;
+        /* Hide: none */
+        /* Show: flex */
+    --reply-marker: flex;
         /* Hide: transparent */
         /* Show: var(--accent-fg) */
     --hide-notifications-number: var(--accent-fg);
@@ -146,7 +148,8 @@
     div[style*="background: linear-gradient(to left"] { background: linear-gradient(to left, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
     div[style*="background: linear-gradient(to right"] { background: linear-gradient(to right, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
     div[style*="background: linear-gradient(to top"] { background: linear-gradient(to top, var(--bg) 0%, transparent 100%) !important; }
-    div[style*="background: linear-gradient(rgb("] { background: linear-gradient(var(--bg) 0%, transparent 100%) !important; }
+    div[style*="background: linear-gradient(rgb("],
+    div[style*="background-image: linear-gradient(rgba("]{ background: linear-gradient(var(--bg) 0%, transparent 100%) !important; }
     
     /* OPACITY */
     /* reset */
@@ -751,11 +754,28 @@
     /* quote post */
     div:has(> [aria-label^="Post by"]) {
         background-color: color-mix(in srgb, var(--bg) 90%, black) !important;
+        &:hover { background-color: var(--post-highlight) !important; }
         /* quote post text */
         > div > div { 
             color: var(--fg) !important;
             &[data-word-wrap] { padding-block: 2px 6px; }
             }
+    }
+    
+    /* quoted post containing muted account or word */
+    div:has(> [aria-label="Account Muted"] + div > [aria-label^="Post by"]),
+    div:has(> [aria-label="Post Hidden by Muted Word"] + div > [aria-label^="Post by"]) {
+        background-color: color-mix(in srgb, var(--bg) 90%, black) !important;
+        &:hover { background-color: var(--post-highlight) !important; }
+        /* magic spell for consistency */ 
+        div:has(> [aria-label^="Post by"]) { background-color: transparent !important; }
+    }
+    
+    /* quote post 'muted' banner */
+    [aria-label^="Account Muted"] > div,
+    [aria-label="Post Hidden by Muted Word"] > div {
+        background-color: var(--bg-darker) !important;
+        &:hover { background-color: var(--highlight) !important; }
     }
         
     /* link preview */
@@ -797,14 +817,20 @@
     /* marker for posts with replies */
     button[data-testid="replyBtn"]:not([aria-label="Reply (0 replies)"])::after {
             display: var(--reply-marker);
+            align-items: center;
+            justify-content: center;
+            
             content: '⋯';
             font-size: 16px;
             font-family: monospace !important;
             color: var(--fg-translucent);
             
+            height: 100%;
+            aspect-ratio: 1;
+            
             position: absolute;
-            left: 9px;
-            top: 2.5px;
+            left: 0;
+            top: -1.5px;
         }
     
     /* expanded post display name */
