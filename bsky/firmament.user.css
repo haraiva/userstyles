@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.3
+@version        1.0.4
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -134,12 +134,20 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         
         --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
         --box-shadow: 0 0 40px black;
-        
-        /* override for all html.themes */
+    }
+    
+    /* override for all html.themes */
+    html.theme--dark, html.theme--dark body, html.theme--dark #root,
+    html.theme--dim, html.theme--dim body, html.theme--dim #root,
+    html.theme--light, html.theme--light body, html.theme--light #root {
+        color-scheme: dark;
+        background-color: var(--bg) !important;
         --text: var(--fg) !important;
         --background: var(--bg !important);
         --backgroundLight: var(--bg) !important;
-        background-color: var(--bg) !important; 
+      
+        scrollbar-color: var(--fg-more-translucent) var(--bg);
+        scrollbar-width: auto;
     }
     
     /* resetting and overriding this mess */
@@ -551,10 +559,16 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* sectioned style */
-    [role="radiogroup"]:has([style*="border-left-width"]) [role="radio"]  { 
-            background-color: var(--bg-darker) !important;
-            &:hover { background-color: var(--highlight) !important; }
-            &[aria-checked="true"] { background-color: var(--accent-translucent) !important; }
+        /*     [role="radiogroup"]:has([style*="border-left-width"]) [role="radio"]  { 
+                    background-color: var(--bg-darker) !important;
+                    &:hover { background-color: var(--highlight) !important; }
+                    &[aria-checked="true"] { background-color: var(--accent-translucent) !important; }
+            } */
+    [aria-label="Color mode"][role="radiogroup"], 
+    [aria-label*="theme"][role="radiogroup"],
+    [aria-label*="Font"][role="radiogroup"] {
+        background-color: var(--bg-darker) !important;
+        > div:first-child { background-color: var(--highlight) !important; }
     }
     
     
@@ -635,6 +649,9 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         &:hover { background-color: var(--highlight) !important; }
     }
     
+    [data-testid="moderationModlistsScreen"] svg path[d^="M22.333 31.667H45M22.333"] {
+        stroke: var(--accent);
+    }
     
     /* 🔍 SEARCH SIDEBAR */
     nav + div { overflow-x: clip !important; }
