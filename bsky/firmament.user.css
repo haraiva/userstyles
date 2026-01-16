@@ -152,6 +152,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [style*="border-color"] { border-color: var(--border) !important; }
     
     [fill*="#"] { fill: var(--fg-translucent); }
+
+    .r-13awgt0 { background-color: var(--bg); }
     
     /* but not the 'danger zone' stuff! */
     [style*="color: rgb(235, 36, 82)"] { 
