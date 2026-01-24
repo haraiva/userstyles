@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.4
+@version        1.0.5
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -692,6 +692,13 @@
     [data-testid="HomeScreen"] div > div:has(> a[href="/feeds"]) { 
         background-color: var(--bg) !important; 
         padding-bottom: 1em !important; 
+    }
+    
+    /* what's up button thing on the following feed */
+    [data-testid="followingFeedPage-feed"] [aria-label="Compose new post"] {
+        background-color: var(--bg) !important; 
+        
+        [aria-label="Add image"] { padding: 4px; }
     }
     
     /* tabs */
