@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.5
+@version        1.0.6
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -53,6 +53,12 @@
         /* Hide: transparent */
         /* Show: var(--accent-fg) */
     --hide-notifications-number: var(--accent-fg);
+
+    /* UI OPTIONS */
+        /* What's up? banner */
+        /* Hide: none */
+        /* Show: flex */
+    --hide-whatsup: none;
 
     /* ACCESSIBILITY */
         /* Hide: none */
@@ -694,9 +700,12 @@
         padding-bottom: 1em !important; 
     }
     
-    /* what's up button thing on the following feed */
+    /* what's up button */
     [data-testid="followingFeedPage-feed"] [aria-label="Compose new post"] {
+        display: var(--hide-whatsup);
         background-color: var(--bg) !important; 
+        
+        [style*="font-size"] { color: var(--fg-translucent) !important; }
         
         [aria-label="Add image"] { padding: 4px; }
     }
