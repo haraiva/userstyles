@@ -1005,6 +1005,10 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [data-testid^="postThreadItem"] div:has(> div > a[aria-label*="avatar"]) + div,
     div:has([data-testid^="postThreadItem"]) > div:has(> [style*="width: 42px"]) > [style*="width: 42px"] > [style*="width: 2px"]
     { background-color: var(--accent-translucent) !important; }
+    
+    /* image lightbox */
+    [style*="inset: 0px; z-index: 10;"] > div[style="opacity: 0.8;"] > div
+    { background: color-mix(in srgb, black 90%, transparent) !important; }
 
     
     
