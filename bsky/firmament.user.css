@@ -684,7 +684,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* 🧭 NAVIGATION */
     
     /* account switcher */
-    nav button[aria-label="Switch accounts"] {
+    nav button[aria-label="Switch accounts"],
+    nav > div > button[aria-haspopup="menu"] {
         background-color: transparent !important;
         * { background-color: transparent !important; }
         
@@ -692,20 +693,22 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* notification numbers */
-    nav [aria-label*="unread item"] { 
+    nav [aria-label*="unread item"],
+    nav > a[href="/notifications"] div[style*="border-radius: 999px"]{ 
         background-color: var(--accent) !important;
         padding: 0;
         display: var(--hide-notifications) !important;
         color: var(--hide-notifications-number) !important;
         &:hover { background-color: var(--accent) !important; }
-        > div {
+        /* > div {
             padding: 2px 4px;
             border-radius: 999px;
-        }
+        } */
     }
     
     /* compose post */
-    [aria-label="Compose new post"] { 
+    [aria-label="Compose new post"], 
+    button:has(path[d^="M17.293 2.293a1"]) { 
         background-color: var(--accent) !important; 
         &:hover { background-color: var(--accent-translucent) !important;  }
         > div:has(svg) path { fill: var(--accent-fg-translucent) !important; }
@@ -742,13 +745,16 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* what's up button */
-    [data-testid="followingFeedPage-feed"] [aria-label="Compose new post"] {
+    [data-testid="followingFeedPage-feed"] button[aria-label="Compose new post"],
+    [data-testid="followingFeedPage-feed"] button[role="button"]:has(> div > div > button > svg){
         display: var(--hide-whatsup);
-        background-color: var(--bg) !important; 
+        background-color: var(--bg) !important;
         
         [style*="font-size"] { color: var(--fg-translucent) !important; }
         
-        [aria-label="Add image"] { padding: 4px; }
+        [aria-label="Add image"],
+        button[role="button"]:has(> svg)
+        { padding: 4px; }
     }
     
     /* tabs */
@@ -790,7 +796,9 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         border-bottom-color: var(--bg-darker) !important; }
         
     /* reposted by */
-    [aria-label^="Reposted by"] {
+    [aria-label^="Reposted by"],
+    [data-testid*="feedItem"] a:has(> svg)
+    {
         svg > path { fill: var(--accent-translucent); }
         div { 
             color: var(--fg-more-translucent) !important; 
@@ -816,14 +824,20 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* hidden content */
-    [data-testid^="contentHider"] {
-            > div > div > button:first-child > div { 
-                background-color: var(--highlight) !important;
-                &:hover { background-color: var(--accent-more-translucent) !important; }
+        /* in feed */
+    [data-testid^="contentHider"] > div > div > button:first-child > div,
+        /* post thread view */
+    div[data-testid^="postThreadItem"] div[data-word-wrap="1"] + div > div > button:has(svg) { 
+        background-color: var(--highlight) !important;
+        border-radius: 8px;
+        margin-top: 0 !important;
+        &:hover { background-color: var(--accent-more-translucent) !important; }
             }
-
-            button[aria-label="Learn more about the moderation applied to this content"] span { color: var(--accent) !important;}
-        }
+            
+        /* text under the content hider */
+        [data-testid^="contentHider"] > div > div > button:last-child > div > span,
+        div[data-testid^="postThreadItem"] div[data-word-wrap="1"] + div > div >  button:last-child > div > span 
+        { color: var(--accent) !important;}
         
     /* quote post */
     div:has(> [aria-label^="Post by"]) {
@@ -889,7 +903,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* marker for posts with replies */
-    button[data-testid="replyBtn"]:not([aria-label="Reply (0 replies)"])::after {
+    button[data-testid="replyBtn"]:not([aria-label*="(0"], [aria-label*="（0"])::after{
             display: var(--reply-marker);
             align-items: center;
             justify-content: center;
@@ -1009,11 +1023,12 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [data-testid="notifsFeed"] [data-testid^="feedItem"] > div > div:last-child > div { color: var(--fg-translucent) !important; }
     
     /* expanded notifs */
-    [data-testid="notifsFeed"] [data-testid^="feedItem"] a[href*="/profile/"] > div:last-child > div > div:last-child   { color: var(--fg-translucent) !important;  }
+    [data-testid="notifsFeed"] [data-testid^="feedItem"] a[href*="/profile/"] > div:last-child > div > div:last-child   { color: var(--fg-translucent) !important; }
     
     [data-testid="notifsFeed"] div[aria-label*="liked"],
     [data-testid="notifsFeed"] div[aria-label*="reposted"],
-    [data-testid="notifsFeed"] div[aria-label*="followed"] { 
+    [data-testid="notifsFeed"] div[aria-label*="followed"],
+    [data-testid="notifsFeed"] a[href="/profile/"] { 
         color: var(--fg-translucent) !important;  
         [data-tooltip] { color: var(--fg-more-translucent) !important;   }
         a[href*="/profile/"] { 
@@ -1023,6 +1038,9 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     
     
     /* 💬 CHAT */
+    /* notifications bubble */
+    a[href="/messages"] > div > svg + div > div[style*="border-radius: 999px"] { background-color: var(--accent) !important; }
+    
     [data-testid="messagesScreen"] a[href^="/messages/"]:hover { background-color: var(--post-highlight) !important; }
     [data-testid="messagesScreen"] a[href^="/messages/"] > div > div {
         > div:nth-child(2) { color: var(--fg-more-translucent) !important; }
@@ -1039,7 +1057,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [data-testid="convoScreen"] div[style*="align-self: flex-end"] { background-color: var(--accent-more-translucent) !important; }
     
     /* reacts */
-    [data-testid="convoScreen"] div:has(> [aria-label*="reacted"]) { background-color: var(--bg-darker) !important; }
+    [data-testid="convoScreen"] div:has(> div > div[style*="font-size: 13.1px;"]) { background-color: var(--border) !important; }
     
     
     
