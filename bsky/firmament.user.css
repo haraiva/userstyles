@@ -1030,16 +1030,36 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* thread borders */
+    [data-testid^="postThreadItem"] > div > div > div[style*="width: 2px;"],
     .r-m5arl1 {
         background-color: var(--accent-translucent) !important;
     }
     /* dots */
-    .r-1mhb1uw svg line, .r-1mhb1uw svg circle  {
-        stroke: var(--accent-translucent) !important;
-        fill: var(--accent-translucent) !important;
+    a[style*="padding-left: 18px"] div {
+        color: var(--accent) !important;
+        line, circle {
+            stroke: var(--accent-translucent) !important;
+            fill: var(--accent-translucent) !important;
+        }
     }
-    .r-1mhb1uw + div { color: var(--accent) !important; }
     /* expanded posts */
+    /* header */
+    [data-testid="postThreadScreen"] > div > div {
+        > button[aria-haspopup="menu"] { 
+            background-color: var(--bg) !important; 
+            &:hover { background-color: var(--highlight) !important }
+        }
+    }
+    
+    /* write your reply button */
+    [data-testid="postThreadScreen"] button:has(div[data-testid="userAvatarImage"])
+    {   
+        border-radius: 999px;
+        background-color: transparent !important;
+        border: var(--bg-darker) 1px solid;
+        &:hover { background-color: var(--highlight) !important}
+    }
+    
     [data-testid^="postThreadItem"] div:has(> div > a[aria-label*="avatar"]) + div,
     div:has([data-testid^="postThreadItem"]) > div:has(> [style*="width: 42px"]) > [style*="width: 42px"] > [style*="width: 2px"]
     { background-color: var(--accent-translucent) !important; }
