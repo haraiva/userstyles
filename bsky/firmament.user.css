@@ -1110,6 +1110,23 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* @ under display name */
     div:has(> [data-testid="profileHeaderDisplayName"]) + div > div { color: var(--fg-translucent) !important;}
     
+    /* header buttons */
+    [data-testid="dmBtn"],
+    [data-testid="profileHeaderEditProfileButton"],
+    [data-testid="profileHeaderDropdownBtn"] div[style*="gradient"] {
+        background-color: var(--accent-translucent) !important;
+        background-image: none !important;
+        &:hover { background-color: var(--highlight) !important; }
+    }
+    
+    /* removing annoying new feature notifs */
+    [data-testid="profileHeaderDropdownBtn"] + div > div {
+        background-color: transparent !important;
+    }
+    [data-testid="profileHeaderDropdownListAddRemoveBtn"] > div { 
+        background-image: none !important;
+    }
+    
     
     /* metrics */
     [data-testid="profileHeaderFollowersButton"],
@@ -1123,23 +1140,22 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     [data-testid="userBannerFallback"],
     [data-testid="userBannerImage"] { background-color: var(--bg-darker) !important; }
     
-    /* back button */
-    button[aria-label="Back"] > div {
-        background-color: var(--bg-translucent) !important;
-        svg path { fill: var(--fg) !important;}
-        &:hover { background-color: var(--bg-more-translucent) !important; }
-    }
-    
     /* description */
     [data-testid="profileHeaderDescription"] a {
         color: var(--accent) !important; 
     }
     
-    /* labels */
-    [aria-label="View information about these labels"] { 
-        background-color: var(--bg-darker) !important; 
-        &:hover { background-color: var(--highlight) !important; }
-    }
+    /* labels */   
+        /* on profile view */
+        [data-testid="profileView"] > div > div:first-child > div > div:has(> button) > button,
+        /* in posts */
+        [data-testid="contentHider-post"] > div > button { 
+            border-radius: 999px;
+            background-color: var(--bg-darker) !important; 
+            &:hover { background-color: var(--highlight) !important; }
+
+            > div[style*="border-radius: 999px;"] { background-color: transparent !important; }
+        }
     
     /* followers and following screen */
     
