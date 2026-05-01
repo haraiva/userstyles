@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.0.6
+@version        1.1.0
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -62,7 +62,9 @@
 
     /* ACCESSIBILITY */
         /* Hide: none */
-        /* Show (keyboard navigation): 1px auto */
+        /* Show (keyboard navigation): 4px solid var(--accent)
+            or any other value you'd like. 
+            as long as it's {width}{style}{colour} */
     --disable-outlines: none;
 }
 /* END OF USER SETTINGS */
@@ -102,7 +104,7 @@
         --accent-fg: var(--option-accent-fg);
         --accent-fg-translucent: color-mix(in srgb, var(--accent-fg) 65%, transparent);
         
-        --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
+        --highlight: color-mix(in srgb, var(--fg) 15%, var(--bg));
         --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
         
         --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
@@ -227,25 +229,47 @@
     
     /* BUTTONS */
     /* disabled buttons */
-    [aria-disabled="true"], [disabled=""] { opacity: 0.5; }
+    [aria-disabled="true"], [disabled=""] { opacity: 0.4; }
     
     /* round and rounded buttons */
     [style*="border-radius: 999px"] { 
-        background-color: var(--bg-darker) !important; 
+        background-color: var(--accent-more-translucent) !important; 
         &:hover { background-color: var(--highlight) !important; }
         > div { color: var(--fg-translucent) !important; }
     }
     
     /* rounded rectangular buttons */
-    /* 'Follows You' and ALT */
+        /* 'Follows You' and ALT */
     [style*="border-radius: 4px"] { background-color: var(--bg-darker) !important; }
-    /*  */
+        /*  */
     button[style*="border-radius: 8px"]:hover, a[style*="border-radius: 8px"]:hover { background-color: var(--highlight) !important; }
     
+    /* close (x) button */
+    button:has(svg > path[d^="M4.293 4.293a1 1 0 0 1 1.414"]) {
+        background-color: var(--bg) !important;
+    }
+    /* ellipses (...) button */
+    button:has(svg > path[d^="M2 12a2 2 0 1 1 4 0"]) {
+        background-color: transparent !important;
+        &:hover {  background-color: var(--highlight) !important; }
+    }
+    /* back button */
+    button:has(svg > path[d^="M3 12a1 1 0 0 1"]),
+    /* search button */
+    button:has(svg > path[d^="M11 5a6 6 0 1 0 0 12"]),
+    /* cog button */
+    [data-testid="editFeedsBtn"],
+    a[href*="settings"][style*="border-radius: 999px;"]:has(svg > path[d^="M11.1 2a1 1 0 0"]) {
+        border-radius: 999px;
+        background-color: var(--bg) !important;
+        div { background-color: transparent !important; }
+        svg path { fill: var(--accent-fg-translucent) !important; }
+        &:hover { background-color: var(--bg-darker) !important; }
+    }
+    
     /* follow button */
-    button[aria-label="Follow"], 
-    button[aria-label="Follow back"], 
-    button[data-testid="followBtn"] { 
+    button[data-testid="followBtn"],
+    a[href*="/profile/"] + button { 
         > div { color: var(--accent-fg) !important; }
         > div:has(svg) path { fill: var(--accent-fg-translucent) !important}
         background-color: var(--accent) !important; 
@@ -253,77 +277,60 @@
     }
     
     /* unfollow button */
-    button[aria-label="Following"],
     button[data-testid="unfollowBtn"] {
         background-color: var(--accent-more-translucent) !important;
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
-    /* save button */
-    button[aria-label^="Save"],
-    button[aria-label="Done"]{ 
+    /* (this will break with a new update im sure) */
+    /* blue buttons */
+    button[style*="background-color: rgb(15, 115, 255);"] {
         background-color: var(--accent) !important;
         div { color: var(--accent-fg) !important; }
-        &:hover { background-color: var(--accent-translucent) !important; }
+        &:hover { background-color: var(--bg) !important; }
     }
+    /* red buttons */
+    button[style*="background-color: rgb(80, 11, 28);"] {
+        background-color: rgb(80, 11, 28) !important;
+        div { color: white !important; }
+    }
+    button[style*="background-color: rgb(235, 36, 82);"] {
+        background-color: rgb(235, 36, 82) !important;
+        div { color: white !important; }
+    } 
+    
     
     /* 'confirm' button of all sorts */
     button[data-testid="confirmBtn"],
     /* change email and password */
-    [aria-label*="email settings"] [aria-label^="Update"],
-    [aria-label="Send email"],
-    [aria-label="Change password dialog"] [aria-label="Request code"],
+    
+    
     /* creating an account or logging in */
     [data-testid="createAccountButton"],
-    [data-testid="loginNextButton"],
-    [aria-label="Continue to next step"]{
+    [data-testid="loginNextButton"] {
         background-color: var(--accent) !important;
          > div { color: var(--accent-fg) !important; }
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
-    /* pin feed button */
-    button[aria-label="Add this feed to your feeds"],
-    div[role="dialog"] > div button[aria-label="Pin feed"][style*="border-radius: 8px"] {
-        background-color: var(--accent) !important;
-        > div { color: var(--accent-fg) !important; }
-        > div:has(svg) path { fill: var(--accent-fg-translucent) !important}
-        &:hover { background-color: var(--accent-translucent) !important; }
-    }
-    
-    /* add- and new- buttons */
-    button[aria-label^="New"],
-    button[aria-label="Add mute word with chosen settings"] {
-        background-color: var(--accent-more-translucent) !important;
-        &:hover { background-color: var(--accent-translucent) !important; }
-    }
-    
     /* more lowkey buttons */
-    button[aria-label="Already have a code?"],
     button[data-testid="signInButton"] {
         background-color: var(--fg-more-translucent) !important;
         &:hover { background-color: var(--highlight) !important; }
     }
     
-    /* buttons with gradients */
-    div:has(> [aria-label="Scroll right"]) { background: linear-gradient(to left, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
-    div:has(> [aria-label="Scroll left"]) { background: linear-gradient(to right, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
-    
     /* checkmark */
-    [aria-label="View this user's verifications"] svg,
     svg:has(circle + path[d^="M17.659 8.175a1.361"]) { 
         circle { fill: var(--accent) !important; }
         path { fill: var(--accent-fg) !important; }
     }
     /* scalloped checkmark */
-    [aria-label="View this user's verifications"] svg,
     svg:has(path + path[d^="M17.861 8.26a1.438"]) { 
         path:first-child { fill: var(--accent) !important; }
         path:last-child { fill: var(--accent-fg) !important; }
     }
     
     /* 🪟 POP-UPS */
-    div[aria-label="Close active dialog"],
     div[role="dialog"]:has([data-testid="composePostView"])
     { 
         background-color: #00000095 !important;
@@ -362,6 +369,7 @@
             background-color: transparent !important;
             &:hover { background-color: var(--highlight) !important; }
             > div { color: var(--fg) !important; }
+            div:has(> svg) { background-color: transparent !important; }
             path { fill: var(--fg-translucent) !important; }
             
            > div[style*="border-radius: 999px"] > div { background-color: var(--accent) !important; }
@@ -380,6 +388,13 @@
         [role="option"] { 
             background-color: transparent !important;
             &:hover { background-color: var(--highlight) !important; }
+        }
+    }
+    
+    /* drop down menu with radial buttons  */
+    div[data-radix-menu-content] {
+        div[role="menuitem"] > div + div[style*="border-radius: 999px;"] {
+            background-color: var(--bg) !important;
         }
     }
     
@@ -448,10 +463,10 @@
     
     /* image editing */
     button[aria-label="Add alt text"]:has(svg),
+    button[data-testid="altTextButton"],
     button[data-testid="editPhotoButton"],
     button[data-testid="removePhotoButton"]
     { background-color: var(--bg-translucent) !important; }
-    
     
     
     /* post settings button */
@@ -489,6 +504,17 @@
         margin-top: 8px; 
         border: 1px solid var(--border) !important; 
         div { color: var(--fg-translucent) !important; }
+        }
+        
+    /* alt text modal */
+        div[role="dialog"]:has(textarea[placeholder*="ALT"]), 
+        div[role="dialog"]:has(textarea[aria-label*="alt"]),
+        div.css-g5y9jx[role="dialog"] {
+            background-color: var(--bg) !important;
+            
+            div > svg > path { 
+                stroke: var(--accent); 
+            }
         }
     
     
@@ -532,14 +558,13 @@
     }
     
     /* sectioned style */
-        /*     [role="radiogroup"]:has([style*="border-left-width"]) [role="radio"]  { 
+    
+    [role="radiogroup"]:has([style*="border-left-width"]) [role="radio"]  { 
                     background-color: var(--bg-darker) !important;
                     &:hover { background-color: var(--highlight) !important; }
                     &[aria-checked="true"] { background-color: var(--accent-translucent) !important; }
-            } */
-    [aria-label="Color mode"][role="radiogroup"], 
-    [aria-label*="theme"][role="radiogroup"],
-    [aria-label*="Font"][role="radiogroup"] {
+            }
+    [data-testid="preferencesThreadsScreen"] [role="radiogroup"] {
         background-color: var(--bg-darker) !important;
         > div:first-child { background-color: var(--highlight) !important; }
     }
@@ -547,13 +572,13 @@
     
     /* ON/OFF TOGGLE */
     div[role="checkbox"] div:has(> [style*="align-self"]) { 
-        background-color: var(--bg-darker) !important; 
+        background-color: var(--accent-more-translucent) !important; 
     }
         /* off */
-        div[role="checkbox"][aria-checked="false"] > div[style*="align-self: flex-start"] { background-color: var(--border) !important; }
+        div[role="checkbox"][aria-checked="false"] div:has(> [style*="align-self: flex-start"]) { background-color: var(--highlight) !important; }
         div[role="checkbox"][aria-checked="false"] div[style*="align-self: flex-start"] { background-color: var(--accent-translucent) !important; }
         /* on */
-        div[role="checkbox"][aria-checked="true"] div:has(> [style*="align-self: flex-end"]) { border-color: var(--accent) !important; }
+        div[role="checkbox"][aria-checked="true"] div:has(> [style*="align-self: flex-end"]) { background-color: var(--accent-translucent) !important; }
         div[role="checkbox"][aria-checked="true"] div[style*="align-self: flex-end"] { background-color: var(--accent) !important; }
     
     
@@ -567,36 +592,22 @@
 
     /* SETTINGS PAGE */
     /* settings screen button hover opacity */
-    #content button[aria-label="Switch account"],
-    #content a[href^="/settings/"],
-    #content a[href^="/moderation"],
-    #content button[aria-label="Help"],
-    #content button[aria-label="Sign out"],
-    #content a[href*="/about/"],
-    #content a[href*="/status"],
-    #content a[href*="/sys/log"],
-    #content button[aria-label*="Version"]
+    #content:has(path[d^="M8 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM4"]) a, 
+    #content:has(path[d^="M8 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM4"]) button
     { &:hover { background-color: var(--highlight); } }
     
     /* ACCOUNT SETTINGS */
-    [aria-label="Update email"],
-    [aria-label="Passport"],
-    [aria-label="Handle"],
-    [aria-label="Export my data"],
-    [aria-label="Deactivate account"],
-    [aria-label="Delete account"]
+    #content:has(path[d="M8.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L15.586 12 8.293 4.707a1 1 0 0 1 0-1.414Z"]) a, 
+    #content:has(path[d="M8.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L15.586 12 8.293 4.707a1 1 0 0 1 0-1.414Z"]) button
     { &:hover { background-color: var(--highlight); } }
     
     [aria-label="Edit"] div { color: var(--accent) !important; &:hover { color: var(--accent-translucent) !important; } }
 
     /* REPLY SETTINGS */
-    button[aria-label="Everybody"],
-    button[aria-label="Nobody"],
-    button[aria-label="Mentioned users"],
-    button[aria-label="Users you follow"],
-    button[aria-label="Your followers"],
-    button[aria-label*='Users in']{
-    
+    [data-testid="ModerationInteractionSettingsScreen"] [role="radio"], 
+    [data-testid="ModerationInteractionSettingsScreen"] [role="checkbox"] 
+    {
+        
         &[aria-checked="false"] > div {
              background-color: var(--bg-darker) !important;
              &:hover { background-color: var(--highlight) !important; }
@@ -622,8 +633,11 @@
         &:hover { background-color: var(--highlight) !important; }
     }
     
-    [data-testid="moderationModlistsScreen"] svg path[d^="M22.333 31.667H45M22.333"] {
-        stroke: var(--accent);
+    [data-testid="moderationModlistsScreen"] div[style*="border-radius: 999px;"]:has(path[d^="M22.333 31.667H45M22.333"]) {
+        background-color: var(--accent-translucent) !important;
+           svg path[d^="M22.333 31.667H45M22.333"] {
+           stroke: var(--accent);
+        }
     }
     
     /* 🔍 SEARCH SIDEBAR */
@@ -643,7 +657,8 @@
     /* 🧭 NAVIGATION */
     
     /* account switcher */
-    nav button[aria-label="Switch accounts"] {
+    nav button[aria-label="Switch accounts"],
+    nav > div > button[aria-haspopup="menu"] {
         background-color: transparent !important;
         * { background-color: transparent !important; }
         
@@ -651,37 +666,35 @@
     }
     
     /* notification numbers */
-    nav [aria-label*="unread item"] { 
+    nav [aria-label*="unread item"],
+    nav > a[href="/notifications"] div[style*="border-radius: 999px"]{ 
         background-color: var(--accent) !important;
         padding: 0;
         display: var(--hide-notifications) !important;
         color: var(--hide-notifications-number) !important;
         &:hover { background-color: var(--accent) !important; }
-        > div {
+        /* > div {
             padding: 2px 4px;
             border-radius: 999px;
-        }
+        } */
     }
     
     /* compose post */
-    [aria-label="Compose new post"] { 
+    [aria-label="Compose new post"], 
+    button:has(path[d^="M17.293 2.293a1"]) { 
         background-color: var(--accent) !important; 
         &:hover { background-color: var(--accent-translucent) !important;  }
         > div:has(svg) path { fill: var(--accent-fg-translucent) !important; }
         > div:last-child { color: var(--accent-fg) !important; font-weight: bold !important; }
     }
     
-    /* compose post round button */
-    [data-testid="composeFAB"] > div {
+    /* compose post, new chat round button */
+    [data-testid="composeFAB"],
+    [data-testid="newChatFAB"] {
         background: var(--accent) !important;
+        &:hover { background-color: var(--accent-translucent) !important; }
         > svg > path { stroke: var(--accent-fg) !important; }
         > svg > line { stroke: var(--accent-fg) !important; }
-    }
-    
-    /* new chat round button */
-    [data-testid="newChatFAB"] > div {
-        background: var(--accent) !important;
-        > svg > path { fill: var(--accent-fg) !important; }
     }
     
     /* section headers */
@@ -701,13 +714,16 @@
     }
     
     /* what's up button */
-    [data-testid="followingFeedPage-feed"] [aria-label="Compose new post"] {
+    [data-testid="followingFeedPage-feed"] button[aria-label="Compose new post"],
+    [data-testid="followingFeedPage-feed"] button[role="button"]:has(> div > div > button > svg){
         display: var(--hide-whatsup);
-        background-color: var(--bg) !important; 
+        background-color: var(--bg) !important;
         
         [style*="font-size"] { color: var(--fg-translucent) !important; }
         
-        [aria-label="Add image"] { padding: 4px; }
+        [aria-label="Add image"],
+        button[role="button"]:has(> svg)
+        { padding: 4px; }
     }
     
     /* tabs */
@@ -749,7 +765,9 @@
         border-bottom-color: var(--bg-darker) !important; }
         
     /* reposted by */
-    [aria-label^="Reposted by"] {
+    [aria-label^="Reposted by"],
+    [data-testid*="feedItem"] a:has(> svg)
+    {
         svg > path { fill: var(--accent-translucent); }
         div { 
             color: var(--fg-more-translucent) !important; 
@@ -775,14 +793,20 @@
     }
     
     /* hidden content */
-    [data-testid^="contentHider"] {
-            > div > div > button:first-child > div { 
-                background-color: var(--highlight) !important;
-                &:hover { background-color: var(--accent-more-translucent) !important; }
+        /* in feed */
+    [data-testid^="contentHider"] > div > div > button:first-child > div,
+        /* post thread view */
+    div[data-testid^="postThreadItem"] div[data-word-wrap="1"] + div > div > button:has(svg) { 
+        background-color: var(--highlight) !important;
+        border-radius: 8px;
+        margin-top: 0 !important;
+        &:hover { background-color: var(--accent-more-translucent) !important; }
             }
-
-            button[aria-label="Learn more about the moderation applied to this content"] span { color: var(--accent) !important;}
-        }
+            
+        /* text under the content hider */
+        [data-testid^="contentHider"] > div > div > button:last-child > div > span,
+        div[data-testid^="postThreadItem"] div[data-word-wrap="1"] + div > div >  button:last-child > div > span 
+        { color: var(--accent) !important;}
         
     /* quote post */
     div:has(> [aria-label^="Post by"]) {
@@ -796,17 +820,17 @@
     }
     
     /* quoted post containing muted account or word */
-    div:has(> [aria-label="Account Muted"] + div > [aria-label^="Post by"]),
-    div:has(> [aria-label="Post Hidden by Muted Word"] + div > [aria-label^="Post by"]) {
+    div[style*="border-radius: 12px"]:has(> button > div > svg > path[d^="M2.293 2.293a1 1 0 0 1 1.414 0L7.335 5.92l.03.03 3.22 3.222 4.243 4.242 3.22 3.22.03.03 3.63"])
+    {
         background-color: color-mix(in srgb, var(--bg) 90%, black) !important;
         &:hover { background-color: var(--post-highlight) !important; }
         /* magic spell for consistency */ 
         div:has(> [aria-label^="Post by"]) { background-color: transparent !important; }
     }
     
+    
     /* quote post 'muted' banner */
-    [aria-label^="Account Muted"] > div,
-    [aria-label="Post Hidden by Muted Word"] > div {
+    div:has(> svg > path[d^="M2.293 2.293a1 1 0 0 1 1.414 0L7.335 5.92l.03.03 3.22 3.222 4.243 4.242 3.22 3.22.03.03 3.63"]){
         background-color: var(--bg-darker) !important;
         &:hover { background-color: var(--highlight) !important; }
     }
@@ -848,7 +872,7 @@
     }
     
     /* marker for posts with replies */
-    button[data-testid="replyBtn"]:not([aria-label="Reply (0 replies)"])::after {
+    button[data-testid="replyBtn"]:not([aria-label*="(0"], [aria-label*="（0"])::after{
             display: var(--reply-marker);
             align-items: center;
             justify-content: center;
@@ -883,37 +907,72 @@
     
     
     /* video controls */
-    [aria-label="Embedded video player"] div { color: white; }
-    [data-testid="scrubber"] > div > div {
+    
+    /* scrubber */
+    [data-testid="scrubber"] {
         opacity: 0.8;
-        background-color: var(--border) !important; 
-        > div { background-color: white !important; }
+    }
+    [data-testid="scrubber"] > div > div {
+        
+        background-color: white !important; 
+        > div { background-color: var(--accent) !important; }
     }
     [data-testid="scrubber"] div[role="slider"] { 
         background-color: white !important; 
-        height: 12px !important; width: 12px !important; 
-        div[style*="border-radius: 999px"] { background-color: var(--border) !important; }
-    }
-
-    /* buttons under the scrubber */
-    [data-testid="scrubber"] + div> * { opacity: 0.8; }
-    
-    [aria-label="Play"],
-    [aria-label="Pause"],
-    [aria-label="Mute"],
-    [aria-label="Unmute"],
-    [aria-label="Enter fullscreen"] {
-        svg > path { fill: white; }
-        background-color: transparent !important;
+        height: 16px !important; width: 16px !important; 
+        div[style*="border-radius: 999px"] { background-color: var(--accent) !important; }
     }
     
-    /* timer */
-    [aria-label="Play"] ~ div,
-    [aria-label="Pause"] ~ div { color: white !important; }
+    /* timer bottom left */
+    [data-testid*="feedItem"] div:has(figure > video) > div > button + div:has(> [style*='font-size']) > div,
+    [data-testid*="postThreadItem"] div:has(figure > video) > div > button + div:has(> [style*='font-size']) > div {
+        color: white !important; 
+        text-shadow: 0px 0px 4px black;
+    }
+    
+    /* container of all control buttons */
+    [data-testid*="feedItem"] div:has(figure > video) > div > button + div > div,
+    [data-testid*="postThreadItem"] div:has(figure > video) > div > button + div > div {
+            opacity: 0.7; 
+            &:hover { opacity: 1; }
+        /* timer */
+        > div[style*="font-size"] { 
+            color: white !important; 
+            text-shadow: 0px 0px 4px black;
+        }
+        /* volume button */
+        div[style*="border-radius: 4px"] {
+            background-color: black !important;
+            input[type="range"][orient="vertical"]::-webkit-slider-thumb,
+            input[type="range"][orient="vertical"]::-moz-range-thumb {
+                background: white !important; 
+            }
+            input[type="range"][orient="vertical"]::-webkit-slider-runnable-track,
+            input[type="range"][orient="vertical"]::-moz-range-track { 
+                background: #ffffff50 !important; 
+            }
+            input[type="range"][orient="vertical"]::-webkit-progress-value ,
+            input[type="range"][orient="vertical"]::-moz-range-progress { 
+                background: white !important; 
+            }
+        }
+        
+        /* control buttons */
+        button {
+            background-color: black !important;          
+            svg > path { fill: white !important; }
+            
+            &:hover {
+                background-color: var(--accent) !important;   
+                svg > path  { fill: var(--accent-fg) !important; }
+            }
+        }
+    }
     
     /* latest posts */
-    [data-testid="loadLatestBtn"] button[aria-label="Load new posts"] { 
-        &:hover { background-color: var(--highlight) !important; opacity: 1 !important; }
+    [data-testid="loadLatestBtn"] button { 
+        background-color: var(--border) !important;
+        &:hover { background-color: var(--bg-lighter) !important; opacity: 1 !important; }
         > div { background-color: transparent !important; }
         svg > path { fill: var(--accent); }
     }
@@ -921,7 +980,7 @@
     /* post status updates */
     [aria-label^="Notifications"] ol > li > div[data-content] > div[data-title] > div { 
         align-items: center;
-        background-color: var(--bg-darker) !important;
+        background-color: var(--bg-lighter) !important;
         > div { padding: 0 !important; }
         svg > path { fill: var(--accent); }
         div > button[aria-label] > div:first-child { 
@@ -937,19 +996,43 @@
     }
     
     /* thread borders */
+    [data-testid^="postThreadItem"] > div > div > div[style*="width: 2px;"],
     .r-m5arl1 {
         background-color: var(--accent-translucent) !important;
     }
     /* dots */
-    .r-1mhb1uw svg line, .r-1mhb1uw svg circle  {
-        stroke: var(--accent-translucent) !important;
-        fill: var(--accent-translucent) !important;
+    a[style*="padding-left: 18px"] div {
+        color: var(--accent) !important;
+        line, circle {
+            stroke: var(--accent-translucent) !important;
+            fill: var(--accent-translucent) !important;
+        }
     }
-    .r-1mhb1uw + div { color: var(--accent) !important; }
     /* expanded posts */
+    /* header */
+    [data-testid="postThreadScreen"] > div > div {
+        > button[aria-haspopup="menu"] { 
+            background-color: var(--bg) !important; 
+            &:hover { background-color: var(--highlight) !important }
+        }
+    }
+    
+    /* write your reply button */
+    [data-testid="postThreadScreen"] button:has(div[data-testid="userAvatarImage"])
+    {   
+        border-radius: 999px;
+        background-color: transparent !important;
+        border: var(--bg-darker) 1px solid;
+        &:hover { background-color: var(--highlight) !important}
+    }
+    
     [data-testid^="postThreadItem"] div:has(> div > a[aria-label*="avatar"]) + div,
     div:has([data-testid^="postThreadItem"]) > div:has(> [style*="width: 42px"]) > [style*="width: 42px"] > [style*="width: 2px"]
     { background-color: var(--accent-translucent) !important; }
+    
+    /* image lightbox */
+    [style*="inset: 0px; z-index: 10;"] > div[style="opacity: 0.8;"] > div
+    { background: color-mix(in srgb, black 90%, transparent) !important; }
 
     
     
@@ -968,11 +1051,9 @@
     [data-testid="notifsFeed"] [data-testid^="feedItem"] > div > div:last-child > div { color: var(--fg-translucent) !important; }
     
     /* expanded notifs */
-    [data-testid="notifsFeed"] [data-testid^="feedItem"] a[href*="/profile/"] > div:last-child > div > div:last-child   { color: var(--fg-translucent) !important;  }
+    [data-testid="notifsFeed"] [data-testid^="feedItem"] a[href*="/profile/"] > div:last-child > div > div:last-child   { color: var(--fg-translucent) !important; }
     
-    [data-testid="notifsFeed"] div[aria-label*="liked"],
-    [data-testid="notifsFeed"] div[aria-label*="reposted"],
-    [data-testid="notifsFeed"] div[aria-label*="followed"] { 
+    [data-testid="notifsFeed"] a[href*="/profile/"] { 
         color: var(--fg-translucent) !important;  
         [data-tooltip] { color: var(--fg-more-translucent) !important;   }
         a[href*="/profile/"] { 
@@ -982,6 +1063,9 @@
     
     
     /* 💬 CHAT */
+    /* notifications bubble */
+    a[href="/messages"] > div > svg + div > div[style*="border-radius: 999px"] { background-color: var(--accent) !important; }
+    
     [data-testid="messagesScreen"] a[href^="/messages/"]:hover { background-color: var(--post-highlight) !important; }
     [data-testid="messagesScreen"] a[href^="/messages/"] > div > div {
         > div:nth-child(2) { color: var(--fg-more-translucent) !important; }
@@ -998,7 +1082,7 @@
     [data-testid="convoScreen"] div[style*="align-self: flex-end"] { background-color: var(--accent-more-translucent) !important; }
     
     /* reacts */
-    [data-testid="convoScreen"] div:has(> [aria-label*="reacted"]) { background-color: var(--bg-darker) !important; }
+    [data-testid="convoScreen"] div:has(> div > div[style*="font-size: 13.1px;"]) { background-color: var(--border) !important; }
     
     
     
@@ -1008,6 +1092,23 @@
     
     /* @ under display name */
     div:has(> [data-testid="profileHeaderDisplayName"]) + div > div { color: var(--fg-translucent) !important;}
+    
+    /* header buttons */
+    [data-testid="dmBtn"],
+    [data-testid="profileHeaderEditProfileButton"],
+    [data-testid="profileHeaderDropdownBtn"] div[style*="gradient"] {
+        background-color: var(--accent-translucent) !important;
+        background-image: none !important;
+        &:hover { background-color: var(--highlight) !important; }
+    }
+    
+    /* removing annoying new feature notifs */
+    [data-testid="profileHeaderDropdownBtn"] + div > div {
+        background-color: transparent !important;
+    }
+    [data-testid="profileHeaderDropdownListAddRemoveBtn"] > div { 
+        background-image: none !important;
+    }
     
     
     /* metrics */
@@ -1022,23 +1123,22 @@
     [data-testid="userBannerFallback"],
     [data-testid="userBannerImage"] { background-color: var(--bg-darker) !important; }
     
-    /* back button */
-    button[aria-label="Back"] > div {
-        background-color: var(--bg-translucent) !important;
-        svg path { fill: var(--fg) !important;}
-        &:hover { background-color: var(--bg-more-translucent) !important; }
-    }
-    
     /* description */
     [data-testid="profileHeaderDescription"] a {
         color: var(--accent) !important; 
     }
     
-    /* labels */
-    [aria-label="View information about these labels"] { 
-        background-color: var(--bg-darker) !important; 
-        &:hover { background-color: var(--highlight) !important; }
-    }
+    /* labels */   
+        /* on profile view */
+        [data-testid="profileView"] > div > div:first-child > div > div:has(> button) > button,
+        /* in posts */
+        [data-testid="contentHider-post"] > div > button { 
+            border-radius: 999px;
+            background-color: var(--bg-darker) !important; 
+            &:hover { background-color: var(--highlight) !important; }
+
+            > div[style*="border-radius: 999px;"] { background-color: transparent !important; }
+        }
     
     /* followers and following screen */
     
