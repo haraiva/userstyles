@@ -420,6 +420,13 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         }
     }
     
+    /* drop down menu with radial buttons  */
+    div[data-radix-menu-content] {
+        div[role="menuitem"] > div + div[style*="border-radius: 999px;"] {
+            background-color: var(--bg) !important;
+        }
+    }
+    
     /* profile preview */
     div[style*="will-change: transform"] > div { 
          background-color: var(--bg) !important; border-radius: 12px;
@@ -491,7 +498,6 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     { background-color: var(--bg-translucent) !important; }
     
     
-    
     /* post settings button */
     button[data-testid="openReplyGateButton"],
     button[data-testid="labelsBtn"]{ 
@@ -533,7 +539,11 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         div[role="dialog"]:has(textarea[placeholder*="ALT"]), 
         div[role="dialog"]:has(textarea[aria-label*="alt"]),
         div.css-g5y9jx[role="dialog"] {
-            background-color: var(--option-bg) !important;
+            background-color: var(--bg) !important;
+            
+            div > svg > path { 
+                stroke: var(--accent); 
+            }
         }
     
     
@@ -577,14 +587,13 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* sectioned style */
-        /*     [role="radiogroup"]:has([style*="border-left-width"]) [role="radio"]  { 
+    
+    [role="radiogroup"]:has([style*="border-left-width"]) [role="radio"]  { 
                     background-color: var(--bg-darker) !important;
                     &:hover { background-color: var(--highlight) !important; }
                     &[aria-checked="true"] { background-color: var(--accent-translucent) !important; }
-            } */
-    [aria-label="Color mode"][role="radiogroup"], 
-    [aria-label*="theme"][role="radiogroup"],
-    [aria-label*="Font"][role="radiogroup"] {
+            }
+    [data-testid="preferencesThreadsScreen"] [role="radiogroup"] {
         background-color: var(--bg-darker) !important;
         > div:first-child { background-color: var(--highlight) !important; }
     }
@@ -592,13 +601,13 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     
     /* ON/OFF TOGGLE */
     div[role="checkbox"] div:has(> [style*="align-self"]) { 
-        background-color: var(--bg-darker) !important; 
+        background-color: var(--accent-more-translucent) !important; 
     }
         /* off */
-        div[role="checkbox"][aria-checked="false"] > div[style*="align-self: flex-start"] { background-color: var(--border) !important; }
+        div[role="checkbox"][aria-checked="false"] div:has(> [style*="align-self: flex-start"]) { background-color: var(--highlight) !important; }
         div[role="checkbox"][aria-checked="false"] div[style*="align-self: flex-start"] { background-color: var(--accent-translucent) !important; }
         /* on */
-        div[role="checkbox"][aria-checked="true"] div:has(> [style*="align-self: flex-end"]) { border-color: var(--accent) !important; }
+        div[role="checkbox"][aria-checked="true"] div:has(> [style*="align-self: flex-end"]) { background-color: var(--accent-translucent) !important; }
         div[role="checkbox"][aria-checked="true"] div[style*="align-self: flex-end"] { background-color: var(--accent) !important; }
     
     
@@ -612,36 +621,22 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
 
     /* SETTINGS PAGE */
     /* settings screen button hover opacity */
-    #content button[aria-label="Switch account"],
-    #content a[href^="/settings/"],
-    #content a[href^="/moderation"],
-    #content button[aria-label="Help"],
-    #content button[aria-label="Sign out"],
-    #content a[href*="/about/"],
-    #content a[href*="/status"],
-    #content a[href*="/sys/log"],
-    #content button[aria-label*="Version"]
+    #content:has(path[d^="M8 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM4"]) a, 
+    #content:has(path[d^="M8 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM4"]) button
     { &:hover { background-color: var(--highlight); } }
     
     /* ACCOUNT SETTINGS */
-    [aria-label="Update email"],
-    [aria-label="Passport"],
-    [aria-label="Handle"],
-    [aria-label="Export my data"],
-    [aria-label="Deactivate account"],
-    [aria-label="Delete account"]
+    #content:has(path[d="M8.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L15.586 12 8.293 4.707a1 1 0 0 1 0-1.414Z"]) a, 
+    #content:has(path[d="M8.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L15.586 12 8.293 4.707a1 1 0 0 1 0-1.414Z"]) button
     { &:hover { background-color: var(--highlight); } }
     
     [aria-label="Edit"] div { color: var(--accent) !important; &:hover { color: var(--accent-translucent) !important; } }
 
     /* REPLY SETTINGS */
-    button[aria-label="Everybody"],
-    button[aria-label="Nobody"],
-    button[aria-label="Mentioned users"],
-    button[aria-label="Users you follow"],
-    button[aria-label="Your followers"],
-    button[aria-label*='Users in']{
-    
+    [data-testid="ModerationInteractionSettingsScreen"] [role="radio"], 
+    [data-testid="ModerationInteractionSettingsScreen"] [role="checkbox"] 
+    {
+        
         &[aria-checked="false"] > div {
              background-color: var(--bg-darker) !important;
              &:hover { background-color: var(--highlight) !important; }
@@ -667,8 +662,11 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         &:hover { background-color: var(--highlight) !important; }
     }
     
-    [data-testid="moderationModlistsScreen"] svg path[d^="M22.333 31.667H45M22.333"] {
-        stroke: var(--accent);
+    [data-testid="moderationModlistsScreen"] div[style*="border-radius: 999px;"]:has(path[d^="M22.333 31.667H45M22.333"]) {
+        background-color: var(--accent-translucent) !important;
+           svg path[d^="M22.333 31.667H45M22.333"] {
+           stroke: var(--accent);
+        }
     }
     
     /* 🔍 SEARCH SIDEBAR */
