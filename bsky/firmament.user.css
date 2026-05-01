@@ -89,10 +89,14 @@
 }
 
 // ACCESSIBILITY
-@var select disable-outlines "Focus outlines" {
+@var select disable-outlines "Focus outline preferences" {
   "hide:Hide*": "none",
-  "show:Show (keyboard navigation)": "1px auto"
+  "show:Show (keyboard navigation)": "4px solid var(--accent)",
+  "custom:Custom outline": "var(--custom-outlines)"
 }
+
+@var text custom-outlines "Custom outline" "2px solid blue"
+
 ==/UserStyle== */
 
 /* 🚨📲🚨 if you're using Userscripts for iOS and Safari, use the Userscripts-friendly version of Firmament here: 
