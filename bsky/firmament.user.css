@@ -366,7 +366,6 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* 🪟 POP-UPS */
-    div[aria-label="Close active dialog"],
     div[role="dialog"]:has([data-testid="composePostView"])
     { 
         background-color: #00000095 !important;
@@ -405,6 +404,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
             background-color: transparent !important;
             &:hover { background-color: var(--highlight) !important; }
             > div { color: var(--fg) !important; }
+            div:has(> svg) { background-color: transparent !important; }
             path { fill: var(--fg-translucent) !important; }
             
            > div[style*="border-radius: 999px"] > div { background-color: var(--accent) !important; }
@@ -1005,8 +1005,9 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* latest posts */
-    [data-testid="loadLatestBtn"] button[aria-label="Load new posts"] { 
-        &:hover { background-color: var(--highlight) !important; opacity: 1 !important; }
+    [data-testid="loadLatestBtn"] button { 
+        background-color: var(--border) !important;
+        &:hover { background-color: var(--bg-lighter) !important; opacity: 1 !important; }
         > div { background-color: transparent !important; }
         svg > path { fill: var(--accent); }
     }
@@ -1014,7 +1015,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* post status updates */
     [aria-label^="Notifications"] ol > li > div[data-content] > div[data-title] > div { 
         align-items: center;
-        background-color: var(--bg-darker) !important;
+        background-color: var(--bg-lighter) !important;
         > div { padding: 0 !important; }
         svg > path { fill: var(--accent); }
         div > button[aria-label] > div:first-child { 
