@@ -274,15 +274,37 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* rounded rectangular buttons */
-    /* 'Follows You' and ALT */
+        /* 'Follows You' and ALT */
     [style*="border-radius: 4px"] { background-color: var(--bg-darker) !important; }
-    /*  */
+        /*  */
     button[style*="border-radius: 8px"]:hover, a[style*="border-radius: 8px"]:hover { background-color: var(--highlight) !important; }
     
+    /* close (x) button */
+    button:has(svg > path[d^="M4.293 4.293a1 1 0 0 1 1.414"]) {
+        background-color: var(--bg) !important;
+    }
+    /* ellipses (...) button */
+    button:has(svg > path[d^="M2 12a2 2 0 1 1 4 0"]) {
+        background-color: transparent !important;
+        &:hover {  background-color: var(--highlight) !important; }
+    }
+    /* back button */
+    button:has(svg > path[d^="M3 12a1 1 0 0 1"]),
+    /* search button */
+    button:has(svg > path[d^="M11 5a6 6 0 1 0 0 12"]),
+    /* cog button */
+    [data-testid="editFeedsBtn"],
+    a[href*="settings"][style*="border-radius: 999px;"]:has(svg > path[d^="M11.1 2a1 1 0 0"]) {
+        border-radius: 999px;
+        background-color: var(--bg) !important;
+        div { background-color: transparent !important; }
+        svg path { fill: var(--accent-fg-translucent) !important; }
+        &:hover { background-color: var(--bg-darker) !important; }
+    }
+    
     /* follow button */
-    button[aria-label="Follow"], 
-    button[aria-label="Follow back"], 
-    button[data-testid="followBtn"] { 
+    button[data-testid="followBtn"],
+    a[href*="/profile/"] + button { 
         > div { color: var(--accent-fg) !important; }
         > div:has(svg) path { fill: var(--accent-fg-translucent) !important}
         background-color: var(--accent) !important; 
@@ -290,70 +312,54 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* unfollow button */
-    button[aria-label="Following"],
     button[data-testid="unfollowBtn"] {
         background-color: var(--accent-more-translucent) !important;
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
-    /* save button */
-    button[aria-label^="Save"],
-    button[aria-label="Done"]{ 
+    /* (this will break with a new update im sure) */
+    /* blue buttons */
+    button[style*="background-color: rgb(15, 115, 255);"] {
         background-color: var(--accent) !important;
         div { color: var(--accent-fg) !important; }
-        &:hover { background-color: var(--accent-translucent) !important; }
+        &:hover { background-color: var(--bg) !important; }
     }
+    /* red buttons */
+    button[style*="background-color: rgb(80, 11, 28);"] {
+        background-color: rgb(80, 11, 28) !important;
+        div { color: white !important; }
+    }
+    button[style*="background-color: rgb(235, 36, 82);"] {
+        background-color: rgb(235, 36, 82) !important;
+        div { color: white !important; }
+    } 
+    
     
     /* 'confirm' button of all sorts */
     button[data-testid="confirmBtn"],
     /* change email and password */
-    [aria-label*="email settings"] [aria-label^="Update"],
-    [aria-label="Send email"],
-    [aria-label="Change password dialog"] [aria-label="Request code"],
+    
+    
     /* creating an account or logging in */
     [data-testid="createAccountButton"],
-    [data-testid="loginNextButton"],
-    [aria-label="Continue to next step"]{
+    [data-testid="loginNextButton"] {
         background-color: var(--accent) !important;
          > div { color: var(--accent-fg) !important; }
         &:hover { background-color: var(--accent-translucent) !important; }
     }
     
-    /* pin feed button */
-    button[aria-label="Add this feed to your feeds"],
-    div[role="dialog"] > div button[aria-label="Pin feed"][style*="border-radius: 8px"] {
-        background-color: var(--accent) !important;
-        > div { color: var(--accent-fg) !important; }
-        > div:has(svg) path { fill: var(--accent-fg-translucent) !important}
-        &:hover { background-color: var(--accent-translucent) !important; }
-    }
-    
-    /* add- and new- buttons */
-    button[aria-label^="New"],
-    button[aria-label="Add mute word with chosen settings"] {
-        background-color: var(--accent-more-translucent) !important;
-        &:hover { background-color: var(--accent-translucent) !important; }
-    }
-    
     /* more lowkey buttons */
-    button[aria-label="Already have a code?"],
     button[data-testid="signInButton"] {
         background-color: var(--fg-more-translucent) !important;
         &:hover { background-color: var(--highlight) !important; }
     }
     
-    /* buttons with gradients */
-    div:has(> [aria-label="Scroll right"]) { background: linear-gradient(to left, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
-    div:has(> [aria-label="Scroll left"]) { background: linear-gradient(to right, var(--bg) 0%, var(--bg) 80%, transparent 100%) !important; }
-    
     /* checkmark */
-    [aria-label="View this user's verifications"] svg,
     svg:has(circle + path[d^="M17.659 8.175a1.361"]) { 
         circle { fill: var(--accent) !important; }
         path { fill: var(--accent-fg) !important; }
     }
     /* scalloped checkmark */
-    [aria-label="View this user's verifications"] svg,
     svg:has(path + path[d^="M17.861 8.26a1.438"]) { 
         path:first-child { fill: var(--accent) !important; }
         path:last-child { fill: var(--accent-fg) !important; }
