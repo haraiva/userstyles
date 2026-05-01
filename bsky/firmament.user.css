@@ -719,17 +719,13 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         > div:last-child { color: var(--accent-fg) !important; font-weight: bold !important; }
     }
     
-    /* compose post round button */
-    [data-testid="composeFAB"] > div {
+    /* compose post, new chat round button */
+    [data-testid="composeFAB"],
+    [data-testid="newChatFAB"] {
         background: var(--accent) !important;
+        &:hover { background-color: var(--accent-translucent) !important; }
         > svg > path { stroke: var(--accent-fg) !important; }
         > svg > line { stroke: var(--accent-fg) !important; }
-    }
-    
-    /* new chat round button */
-    [data-testid="newChatFAB"] > div {
-        background: var(--accent) !important;
-        > svg > path { fill: var(--accent-fg) !important; }
     }
     
     /* section headers */
