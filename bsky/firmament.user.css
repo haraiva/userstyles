@@ -855,17 +855,17 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* quoted post containing muted account or word */
-    div:has(> [aria-label="Account Muted"] + div > [aria-label^="Post by"]),
-    div:has(> [aria-label="Post Hidden by Muted Word"] + div > [aria-label^="Post by"]) {
+    div[style*="border-radius: 12px"]:has(> button > div > svg > path[d^="M2.293 2.293a1 1 0 0 1 1.414 0L7.335 5.92l.03.03 3.22 3.222 4.243 4.242 3.22 3.22.03.03 3.63"])
+    {
         background-color: color-mix(in srgb, var(--bg) 90%, black) !important;
         &:hover { background-color: var(--post-highlight) !important; }
         /* magic spell for consistency */ 
         div:has(> [aria-label^="Post by"]) { background-color: transparent !important; }
     }
     
+    
     /* quote post 'muted' banner */
-    [aria-label^="Account Muted"] > div,
-    [aria-label="Post Hidden by Muted Word"] > div {
+    div:has(> svg > path[d^="M2.293 2.293a1 1 0 0 1 1.414 0L7.335 5.92l.03.03 3.22 3.222 4.243 4.242 3.22 3.22.03.03 3.63"]){
         background-color: var(--bg-darker) !important;
         &:hover { background-color: var(--highlight) !important; }
     }
