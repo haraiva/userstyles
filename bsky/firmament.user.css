@@ -139,7 +139,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         --accent-fg: var(--option-accent-fg);
         --accent-fg-translucent: color-mix(in srgb, var(--accent-fg) 65%, transparent);
         
-        --highlight: color-mix(in srgb, var(--fg) 15%, transparent);
+        --highlight: color-mix(in srgb, var(--fg) 15%, var(--bg));
         --post-highlight: color-mix(in srgb, var(--fg) 3%, transparent);
         
         --border: color-mix(in srgb, var(--option-border) var(--border-tint), var(--bg));
@@ -264,11 +264,11 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     
     /* BUTTONS */
     /* disabled buttons */
-    [aria-disabled="true"], [disabled=""] { opacity: 0.5; }
+    [aria-disabled="true"], [disabled=""] { opacity: 0.4; }
     
     /* round and rounded buttons */
     [style*="border-radius: 999px"] { 
-        background-color: var(--bg-darker) !important; 
+        background-color: var(--accent-more-translucent) !important; 
         &:hover { background-color: var(--highlight) !important; }
         > div { color: var(--fg-translucent) !important; }
     }
