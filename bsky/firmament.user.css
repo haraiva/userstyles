@@ -1088,10 +1088,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     /* expanded notifs */
     [data-testid="notifsFeed"] [data-testid^="feedItem"] a[href*="/profile/"] > div:last-child > div > div:last-child   { color: var(--fg-translucent) !important; }
     
-    [data-testid="notifsFeed"] div[aria-label*="liked"],
-    [data-testid="notifsFeed"] div[aria-label*="reposted"],
-    [data-testid="notifsFeed"] div[aria-label*="followed"],
-    [data-testid="notifsFeed"] a[href="/profile/"] { 
+    [data-testid="notifsFeed"] a[href*="/profile/"] { 
         color: var(--fg-translucent) !important;  
         [data-tooltip] { color: var(--fg-more-translucent) !important;   }
         a[href*="/profile/"] { 
