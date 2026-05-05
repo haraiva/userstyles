@@ -298,7 +298,7 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         border-radius: 999px;
         background-color: var(--bg) !important;
         div { background-color: transparent !important; }
-        svg path { fill: var(--accent-fg-translucent) !important; }
+        svg path { fill: var(--fg-translucent) !important; }
         &:hover { background-color: var(--bg-darker) !important; }
     }
     
