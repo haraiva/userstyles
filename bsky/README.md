@@ -3,7 +3,7 @@
 
 A customisable theme for [Bluesky Social](https://bsky.app) inspired by [@fenny.zone](https://bsky.app/profile/fenny.zone)'s amazing ["Better Bluesky" userstyle](https://userstyles.world/style/11956/better-bluesky).
 
-## Latest version: [v1.1.0](https://github.com/haraiva/userstyles/releases/tag/firmament-v1.1.0)
+## Latest version: [v1.1.1](https://github.com/haraiva/userstyles/releases/tag/firmament-v1.1.1)
 
 ⚠️ If you're using a custom colour scheme, I highly recommend backing up the values safely somewhere in case they're overwritten by an update! ⚠️
 

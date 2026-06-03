@@ -263,7 +263,7 @@
         border-radius: 999px;
         background-color: var(--bg) !important;
         div { background-color: transparent !important; }
-        svg path { fill: var(--accent-fg-translucent) !important; }
+        svg path { fill: var(--fg-translucent) !important; }
         &:hover { background-color: var(--bg-darker) !important; }
     }
     
@@ -665,6 +665,9 @@
         &[aria-expanded="true"] { background-color: var(--accent-more-translucent) !important; }
     }
     
+    /* nav buttons */
+    nav a[href^="/"] { background: none !important; }
+    
     /* notification numbers */
     nav [aria-label*="unread item"],
     nav > a[href="/notifications"] div[style*="border-radius: 999px"]{ 
@@ -681,6 +684,8 @@
     
     /* compose post */
     [aria-label="Compose new post"], 
+    button:has(path[d^="M3 16.8V7.2c0-.544-.001-1.011.03-1.395.033-.395.104-.789.297-1.167a3"]),
+    /* why the fuck did they change the svg path lol. old one below. */
     button:has(path[d^="M17.293 2.293a1"]) { 
         background-color: var(--accent) !important; 
         &:hover { background-color: var(--accent-translucent) !important;  }
@@ -784,8 +789,6 @@
         color: var(--fg-translucent) !important; 
         a > span { color: var(--accent) !important; }
     }
-    
-    [data-testid*="feedItem"] div 
     
     /* content */
     [data-testid="postText"] {
