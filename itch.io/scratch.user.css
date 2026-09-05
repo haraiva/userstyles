@@ -55,6 +55,7 @@
     --tweak-notification-display: var(--tweak-option-notification-display);
     --tweak-summary-display: var(--tweak-option-summary-display);
     --tweak-compact-socials: var(--tweak-option-compact-socials);
+    }
     
      * { box-sizing: border-box; }
     
