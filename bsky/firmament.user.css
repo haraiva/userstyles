@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Firmament
 @namespace      https://github.com/haraiva/userstyles/tree/main/bsky
-@version        1.1.0
+@version        1.1.2
 @description    a customisable theme for Bluesky Social by @haraiva.bsky.social
 @author         haraiva.bsky.social
 @license        MIT
@@ -754,8 +754,8 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     }
     
     /* what's up button */
-    [data-testid="followingFeedPage-feed"] button[aria-label="Compose new post"],
-    [data-testid="followingFeedPage-feed"] button[role="button"]:has(> div > div > button > svg){
+    [data-testid="followingFeedPage-feed"] div[data-list-row=""] > div:has(> div > div > button > svg),
+    [data-testid="followingFeedPage-feed"] div[role="button"]:has(> div > div > button > svg){
         display: var(--hide-whatsup);
         background-color: var(--bg) !important;
         
@@ -763,7 +763,10 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         
         [aria-label="Add image"],
         button[role="button"]:has(> svg)
-        { padding: 4px; }
+        { 
+            background-color: unset !important; padding: 4px;
+            &:hover { background-color: var(--accent-more-translucent) !important;}
+        }
     }
     
     /* tabs */
@@ -879,6 +882,18 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
         background-color: var(--bg-darker) !important;
         color: var(--fg) !important;
         &:hover { background-color: var(--accent-more-translucent) !important; }
+    }
+    
+    /* video and gif preview button */
+    button:has(path[d="M6.514 2.143A1 1 0 0 0 5 3v18a1 1 0 0 0 1.514.858l15-9a1 1 0 0 0 0-1.716l-15-9Z"]) {
+        div {
+            background-color: var(--accent) !important;
+            &:hover { background-color: var(--accent) !important; }
+            &+ svg > path { fill: var(--accent-fg) !important; }
+        }
+    }
+    button:has(path[d="M6.514 2.143A1 1 0 0 0 5 3v18a1 1 0 0 0 1.514.858l15-9a1 1 0 0 0 0-1.716l-15-9Z"]) + div { 
+        background-color: #ffffff15 !important;
     }
         
     /* interaction buttons */ 
@@ -1068,10 +1083,59 @@ https://github.com/haraiva/userstyles/tree/main/bsky/safari */
     div:has([data-testid^="postThreadItem"]) > div:has(> [style*="width: 42px"]) > [style*="width: 42px"] > [style*="width: 2px"]
     { background-color: var(--accent-translucent) !important; }
     
-    /* image lightbox */
+    /* IMAGE LIGHTBOX */
+    
+    /* background */
     [style*="inset: 0px; z-index: 10;"] > div[style="opacity: 0.8;"] > div
     { background: color-mix(in srgb, black 90%, transparent) !important; }
-
+    
+    /* lightbox content */
+    [style*="inset: 0px; z-index: 10;"]:has(div[style="opacity: 0.8;"]) > div[role="dialog"] { 
+        
+        /* alt text */ 
+        div[style*="backdrop-filter: blur(16px)"] {
+            background-color: black !important;
+            scrollbar-color: grey transparent;
+        }
+        div[aria-label*="alt"] {
+                border-left: 1px solid var(--accent);
+                padding-left: 1em;
+                > div {
+                color: white !important; 
+                max-width: 70ch; 
+            }
+        }
+        
+        /* buttons on top of lightbox */
+        button { 
+            div { backdrop-filter: unset !important;  background-color: transparent !important; }
+            background-color: black !important;
+            &:hover { background-color: var(--accent-translucent) !important; }
+            svg > path { fill: white; }  
+        }
+        
+        /* arrow buttons on carousel */
+        div[data-expoimage="true"] ~ button { 
+            background-color: black !important;
+            top: 50vh;
+            &:hover { background-color: var(--accent-translucent) !important; }
+            svg > path { fill: white; } 
+         }
+        
+        /* putting images in a frame so they dont get the fucking UI on top of them */
+        div[data-expoimage="true"] {
+        display: flex; align-items: center; justify-content: center;
+        padding: 5em;
+        div { width: 100%; height: 100%; }
+        img { position: relative !important; }  
+        }
+    
+    }
+    
+    /* reply specific */
+    div[data-testid="composePostView"]:has([data-testid="userAvatarImage"]) div[style*="border-radius: 4px"] { 
+        background-color: transparent !important;
+    }
     
     
     /* 🔔 NOTIFICATIONS */
